@@ -1,8 +1,8 @@
-Ground Truth 不要抱怨糊口给予了太多
-Synthesis Results 不要抱愚糊口给予了太多
+Ground Truth: 不要抱怨糊口给予太多
+Synthesis Results: 不要抱愚糊口给予太多
 
-Ground Truth 喂马，劈柴，周游世
-Synthesis Results 喂马，劈柴，周游世
+Ground Truth: 喂马，劈柴，周游世
+Synthesis Results: 喂马，劈柴，周游世
 
-Ground Truth 2006年，“淫水雨孤”风波。
-Synthesis Results 2006年，“淫水雨孤”风波。
+Ground Truth: 2006年，“淫水雨孤”风波。
+Synthesis Results: 2006年，“淫水雨孤”风波。
