@@ -16,15 +16,17 @@ Our initial experiments used `GOT-OCR-2.0-hf`.
 ### 2. GLM-OCR (zai-org)
 We transitioned to `zai-org/GLM-OCR`, a 0.9B parameter multimodal model optimized for complex document understanding and handwriting.
 
-**Improvements:**
-*   **Superior Accuracy:** It accurately recognized both English handwritten cursive and Chinese characters.
-*   **Layout Preservation:** It excelled at maintaining the structure of the documents, correctly grouping lines and even utilizing LaTeX syntax (e.g., `\textcircled{1}`) for symbols.
+**Initial Promise:**
+*   **Superior Structure:** It initially appeared to excel at maintaining the structure of documents, correctly grouping lines and utilizing LaTeX syntax.
 
-**The Hallucination Problem:**
-While GLM-OCR is a massive improvement over GOT-OCR, it still suffers from **hallucinations** (e.g., slightly altering characters or words that aren't perfectly legible).
+**The Hallucination and Visual Acuity Problem:**
+Despite the initial promise, extensive testing with ultra-strict, pixel-literal prompting revealed severe, unfixable flaws in the 0.9B parameter GLM-OCR model when applied to complex or messy handwriting:
 
-*Why is this a problem?*
-Hallucinations are highly problematic when the OCR output is intended to be parsed into structured data formats like **JSON** for downstream automation pipelines. Automation relies on deterministic, precise data extraction. If the OCR engine hallucinates keys, misreads values, or injects non-existent text, the JSON parser will fail or, worse, feed incorrect data into automated systems leading to silent failures.
+1. **Context-Copying over Pixel Reading:** The model relies heavily on language priors. When faced with visual ambiguity (e.g., messy handwriting), it fails to read the physical strokes and instead confidently hallucinates based on surrounding context. For example, it repeatedly misread "注水西瓜" as "淫水雨孤" and ignored malformed characters to force sentences to make sense.
+2. **Repetition Loops:** Just like GOT-OCR, when the model physically breaks down trying to parse dense, handwritten text on CPU, it enters infinite generation loops (e.g., endlessly repeating "Bâtiment debout sur côté droit supérieur de fenêtre de garage").
+
+**Verdict:**
+GLM-OCR (0.9B) is fundamentally unsuited for industrial automation pipelines where zero-hallucination and exact pixel-fidelity are required. It lacks the core visual acuity necessary for complex cursive, acting as a language-model crutch rather than a precise OCR engine. We must pivot to testing a larger, more robust Vision-Language Model.
 
 ## Files
 *   `main.py`: The Python script used for inference.

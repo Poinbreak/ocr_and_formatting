@@ -1,7 +1,12 @@
 import torch
+import sys
 from transformers import AutoProcessor, GlmOcrForConditionalGeneration
 from PIL import Image
 import os
+
+# Set standard output encoding to handle unicode characters
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8')
 
 # 1. Setup device
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -30,13 +35,23 @@ for img_file in image_files:
 
     image = Image.open(image_path).convert("RGB")
 
+    prompt_text = """You are an ultra-strict, pixel-literal OCR Engine. Your singular objective is to transcribe the exact characters present in the image based ONLY on their physical visual strokes, completely ignoring context, grammar, or expected meaning.
+
+CRITICAL DIRECTIVES:
+1. Pixel-Level Literal Transcription: You must read exactly what is physically written on the page, flaws and all. Do not autocorrect, do not fix typos, and do not make the text make sense.
+2. ZERO Contextual Guessing: Never use surrounding text to guess a poorly written word. If a word is "注水西瓜" but looks like "淫水雨孤", you MUST output exactly what it visually looks like. Do not assume repeating lines are identical if the handwriting differs.
+3. Record Malformed Characters: If a character is malformed, transcribe the character it most visually resembles, even if it creates a nonsensical word. If it is completely unrecognizable, use [UNREADABLE].
+4. Absolute Numerical Precision: Numbers, dates, and identifiers must be extracted exactly as drawn. 
+
+Task: Transcribe the image. Prioritize visual accuracy over semantic meaning. Do not hallucinate."""
+
     # 4. Prepare inputs using chat template
     messages = [
         {
             "role": "user",
             "content": [
                 {"type": "image", "image": image},
-                {"type": "text", "text": "Text Recognition:"},
+                {"type": "text", "text": prompt_text},
             ],
         }
     ]
@@ -67,4 +82,4 @@ for img_file in image_files:
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(result)
     print(f"Result saved to: {output_file}")
-    print(result.encode("utf-8", errors="replace").decode("utf-8"))
+    print(result)
