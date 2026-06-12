@@ -1,0 +1,67 @@
+
+{
+    "subject": "Chem-bills",
+    "concepts": [
+        {
+            "concept_name": "Industrial Management",
+            "definition": "DEF organization of various industrial activities with respect to their work and time management"
+        },
+        {
+            "concept_name": "Management",
+            "definition": "Management"
+        },
+        {
+            "concept_name": "Industry",
+            "definition": "Industry"
+        },
+        {
+            "concept_name": "Service",
+            "definition": "Service (health, internet etc.) service"
+        },
+        {
+            "concept_name": "Production",
+            "definition": "production"
+        },
+        {
+            "concept_name": "Technical Department",
+            "definition": "Technical Department"
+        },
+        {
+            "concept_name": "Maintenance",
+            "definition": "Maintenance"
+        },
+        {
+            "concept_name": "Store department",
+            "definition": "Store department"
+        },
+        {
+            "concept_name": "Quality control",
+            "definition": "Quality control"
+        },
+        {
+            "concept_name": "Stores",
+            "definition": "Stores"
+        },
+        {
+            "concept_name": "Marketing",
+            "definition": "Marketing"
+        },
+        {
+            "concept_name": "Finance",
+            "definition": "Finance"
+        }
+    ],
+    "departments": [
+        "Production",
+        "Technical Department",
+        "Maintenance",
+        "Store department",
+        "Quality control",
+        "stores",
+        "purchase/sale",
+        "department",
+        "Marketing",
+        "HR department",
+        "Finance"
+    ]
+}
