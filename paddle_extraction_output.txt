@@ -1,0 +1,3 @@
+RAW EXTRACTION:
+{'markdown_texts': 'Industrial Management and Quality Control\n\norganization of various industrial activities with respect to their work and time management. Management:\n\n① Regulation  $ \\rightarrow $ adjustment\n\nV2 Organization → linkage of different components of process with each other\n\n③ Optimization → operation of work in such a way to get minimum efficiency.\n\nIndustry? → product → on physical form\n\nService (eghealth, internet etc) service (Trains around us mobile, ten, clothes, soup)\n\nIndustrial Management\n\n(CEO) Managers/heads/directors\n\nproduction, planning & control engineering department', 'markdown_images': {}, 'page_index': None, 'input_path': '1.webp'}
+

@@ -18,7 +18,7 @@ model_id = "zai-org/GLM-OCR"
 processor = AutoProcessor.from_pretrained(model_id)
 model = GlmOcrForConditionalGeneration.from_pretrained(
     model_id,
-    torch_dtype=torch.float32,
+    torch_dtype=torch.bfloat16 if device == "cuda" else torch.float32,
 ).to(device)
 
 # 3. Image to process

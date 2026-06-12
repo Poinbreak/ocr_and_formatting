@@ -42,11 +42,11 @@ def enhance_image_for_ocr(image_path, output_path):
 
 def run_qwen_ocr(image_path):
     print(f"[*] Loading Qwen2.5-VL for OCR on {image_path}...")
-    device = "cpu"
+    device = "cuda" if torch.cuda.is_available() else "cpu"
     model_id = "Qwen/Qwen2.5-VL-3B-Instruct"
     
     model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
-        model_id, torch_dtype=torch.float32, device_map="cpu"
+        model_id, torch_dtype=torch.float32 if device == "cpu" else torch.bfloat16, device_map=device
     )
     processor = AutoProcessor.from_pretrained(model_id)
     
@@ -89,13 +89,13 @@ def run_qwen_ocr(image_path):
 
 def extract_json_with_nuextract(text, schema):
     print("[*] Loading NuExtract-tiny for JSON extraction...")
-    device = "cpu"
+    device = "cuda" if torch.cuda.is_available() else "cpu"
     model_id = "numind/NuExtract-tiny"
     
     tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
     model = AutoModelForCausalLM.from_pretrained(
-        model_id, torch_dtype=torch.float32, trust_remote_code=True
-    ).to(device)
+        model_id, torch_dtype=torch.float32 if device == "cpu" else torch.bfloat16, trust_remote_code=True, device_map=device
+    )
     
     schema_str = json.dumps(json.loads(schema), indent=4)
     input_llm = "<|input|>\n### Template:\n" + schema_str + "\n### Text:\n" + text + "\n<|output|>\n"
