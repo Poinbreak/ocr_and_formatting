@@ -87,21 +87,11 @@ def run_qwen_ocr(image_path):
     
     return output_text
 
-def extract_json_with_nuextract(text, schema):
-    print("[*] Loading NuExtract-tiny for JSON extraction...")
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    model_id = "numind/NuExtract-tiny"
-    
-    tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
-    model = AutoModelForCausalLM.from_pretrained(
-        model_id, torch_dtype=torch.float32 if device == "cpu" else torch.bfloat16, trust_remote_code=True, device_map=device
-    )
-    
+def predict_with_nuextract(model, tokenizer, text, schema, device):
     schema_str = json.dumps(json.loads(schema), indent=4)
     input_llm = "<|input|>\n### Template:\n" + schema_str + "\n### Text:\n" + text + "\n<|output|>\n"
     
     input_ids = tokenizer(input_llm, return_tensors="pt", truncation=True, max_length=4000).to(device)
-    print("[*] Parsing structured JSON...")
     output = tokenizer.decode(model.generate(**input_ids, max_new_tokens=1000)[0], skip_special_tokens=True)
     
     try:
@@ -113,28 +103,66 @@ def extract_json_with_nuextract(text, schema):
 
 if __name__ == "__main__":
     import glob
-    images = glob.glob("*.jpg") + glob.glob("*.png")
+    import shutil
     
-    # Filter out already enhanced images to avoid loop
-    images = [img for img in images if not img.startswith("enhanced_")]
+    images = glob.glob("*.jpg") + glob.glob("*.png") + glob.glob("*.webp")
+    # Filter out already enhanced/preprocessed images to avoid loop
+    images = [img for img in images if not img.startswith("pipeline_")]
     
     if not images:
         print("No images found in the current directory.")
         sys.exit(0)
         
     target_image = images[0] # Test on the first available image
-    enhanced_path = f"enhanced_{target_image}"
     
-    # 1. Enhance
-    enhance_image_for_ocr(target_image, enhanced_path)
+    # Define artifact paths
+    preprocessed_path = "pipeline_preprocessed.jpg"
+    postprocessed_path = "pipeline_postprocessed.jpg"
+    raw_ocr_path = "pipeline_raw_ocr.txt"
+    context_updated_path = "pipeline_context_updated.txt"
+    final_json_path = "pipeline_final.json"
     
-    # 2. OCR
-    raw_text = run_qwen_ocr(enhanced_path)
-    with open("pipeline_raw_ocr.txt", "w", encoding="utf-8") as f:
+    # 1. Preprocessed Image (Copy original)
+    print(f"[*] Creating preprocessed image copy...")
+    shutil.copy2(target_image, preprocessed_path)
+    print(f"[*] Preprocessed image saved to: {preprocessed_path}")
+    
+    # 2. Postprocessed Image (Enhance)
+    enhance_image_for_ocr(preprocessed_path, postprocessed_path)
+    
+    # 3. Raw OCR Text
+    raw_text = run_qwen_ocr(postprocessed_path)
+    with open(raw_ocr_path, "w", encoding="utf-8") as f:
         f.write(raw_text)
+    print(f"[*] Raw OCR saved to: {raw_ocr_path}")
         
-    # 3. JSON Extract
-    schema = '''{
+    # 4. Context Updated Text
+    print("[*] Loading NuExtract-tiny...")
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    model_id = "numind/NuExtract-tiny"
+    tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
+    model = AutoModelForCausalLM.from_pretrained(
+        model_id, torch_dtype=torch.float32 if device == "cpu" else torch.bfloat16, trust_remote_code=True, device_map=device
+    )
+    
+    print("[*] Context updating raw OCR text...")
+    correction_schema = '{"corrected_full_text": ""}'
+    corrected_json_str = predict_with_nuextract(model, tokenizer, raw_text, correction_schema, device)
+    
+    # Attempt to extract just the string from the returned JSON
+    try:
+        corrected_dict = json.loads(corrected_json_str)
+        context_updated_text = corrected_dict.get("corrected_full_text", corrected_json_str)
+    except json.JSONDecodeError:
+        context_updated_text = corrected_json_str
+        
+    with open(context_updated_path, "w", encoding="utf-8") as f:
+        f.write(context_updated_text)
+    print(f"[*] Context updated text saved to: {context_updated_path}")
+        
+    # 5. JSON Extract
+    print("[*] Parsing structured JSON from corrected text...")
+    final_schema = '''{
       "subject": "",
       "concepts": [
         {
@@ -145,14 +173,18 @@ if __name__ == "__main__":
       "departments": [""]
     }'''
     
-    json_data = extract_json_with_nuextract(raw_text, schema)
+    json_data = predict_with_nuextract(model, tokenizer, context_updated_text, final_schema, device)
     
-    with open("pipeline_final.json", "w", encoding="utf-8") as f:
+    with open(final_json_path, "w", encoding="utf-8") as f:
         f.write(json_data)
         
     print(f"\n{'='*40}")
     print("PIPELINE COMPLETE!")
-    print(f"Raw OCR saved to: pipeline_raw_ocr.txt")
-    print(f"Final JSON saved to: pipeline_final.json")
+    print(f"1. Preprocessed Image: {preprocessed_path}")
+    print(f"2. Postprocessed Image: {postprocessed_path}")
+    print(f"3. Raw OCR Text: {raw_ocr_path}")
+    print(f"4. Context Updated Text: {context_updated_path}")
+    print(f"5. Final JSON: {final_json_path}")
     print(f"{'='*40}")
+    print("Final JSON Output:")
     print(json_data)

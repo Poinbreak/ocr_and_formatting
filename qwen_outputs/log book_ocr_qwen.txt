@@ -1,0 +1,8 @@
+| DAY | DESCRIPTION OF WORK DONE |
+|-----|-----------------------------|
+| MON. | 1. 10H can indicate errors in Pykon programs. 2. Using exceptions, errors can be indicated. 3. Exceptions are very useful for responding. |
+| TUE. | Common errors in Pykon programming. Syntax errors occur when the code does not follow correct syntax. |
+| WED. | Run-time errors occur during program execution. Logical errors occur when the code does not follow correct syntax. |
+| THUR. | Handle exceptions using Pykon provided functions. |
+| FRI. | Handling errors using Pykon provided functions. |
+| SAT. | [UNREADABLE] |

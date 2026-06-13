@@ -40,7 +40,38 @@ We explored `PaddleOCR-VL` combined with local LLMs (like Ollama) for equation a
 *   **Misreadings:** It struggles with nuanced handwriting, interpreting "Trends around us" as "Trains around us", "form" as "ten", and missing out-of-line context like headers ("Chem-bills").
 *   **Tooling Conflicts:** Setting up PaddlePaddle alongside PyTorch leads to notorious Windows C++ conflicts (`pybind11` clashes and DLL hell) that require aggressive workarounds or CPU-only fallbacks.
 
+### 4. Qwen2.5-VL-3B-Instruct
+We transitioned to testing the `Qwen2.5-VL-3B-Instruct` model and it has yielded the **best success so far**.
+
+**Strengths:**
+*   **High Visual Acuity and Formatting:** Unlike previous models, Qwen demonstrated an exceptional ability to maintain the structural layout of complex documents. For instance, when presented with a handwritten log book, it flawlessly transcribed the contents directly into a structured Markdown table (`| DAY | DESCRIPTION OF WORK DONE |`).
+*   **Accuracy:** It avoids the hallucination issues seen in GLM-OCR and accurately reads the literal text rather than relying solely on language priors.
+
+**Verdict:**
+Qwen2.5-VL provides the reliability, formatting, and pixel-accuracy needed for the OCR pipeline. It sets the new benchmark for this project's extraction tasks.
+
+## The OCR to JSON Pipeline
+
+We have established a robust 5-step pipeline to maximize accuracy and structure, processing raw images into formatted JSON data:
+
+1. **Pre-processing:** The raw image is ingested into the system.
+2. **Image Enhancement (OpenCV):** The image undergoes adaptive thresholding and dilation to isolate text. 
+3. **Raw OCR (Qwen2.5-VL):** The enhanced image is passed to Qwen2.5-VL for a pixel-literal transcription, leveraging its strong structural understanding.
+4. **Context Update (NuExtract):** The raw OCR text is fed into NuExtract-tiny, prompting it to act as a spell-checker and context-corrector. This smooths out any minor misreadings or spelling mistakes without hallucinating new facts.
+5. **JSON Extraction (NuExtract):** The corrected text is passed through NuExtract a second time, mapping the context-updated text flawlessly to our target JSON schema (e.g., extracting subjects, concepts, and departments).
+
+### Success of Qwen + NuExtract
+This combined approach has proven to be highly successful. Qwen handles the heavy lifting of maintaining structure (like generating markdown tables from handwritten logs) and accurate literal reading, while NuExtract acts as a lightweight, precise formatting engine. NuExtract cleans the text and organizes it, effectively bridging the gap between raw unstructured pixels and strict database-ready formats.
+
+### Image Enhancement Issues & New Solutions
+Our current OpenCV enhancement approach (adaptive thresholding + dilation) has significant drawbacks. While it forces contrast, it often completely blows out faint strokes or introduces severe noise in unevenly lit regions. Furthermore, simple dilation causes dense cursive letters to bleed into each other, actually making it harder for the Vision model to read.
+
+**Better Enhancement Alternatives:**
+*   **Illumination Equalization:** Using background subtraction to normalize lighting across the document before attempting to extract text.
+*   **CLAHE (Contrast Limited Adaptive Histogram Equalization):** Enhances local contrast without overexposing or degrading the rest of the document.
+*   **Deep Learning Denoisers:** Utilizing lightweight neural networks (like UNet-based document cleaners) to intelligently separate pen strokes from the background paper. This preserves faint lines without causing letter bleeding.
+
 ## Future Directions
-The project can move in two primary directions from here:
-1. **Pipeline Approach (Current Experiment):** Using a lightweight detector like `PaddleOCR` to grab the structured text, and then passing that noisy text to a cleanup LLM (like Ollama/Llama) to fix the hallucinations and misreadings. We are experimenting with this way first because it is faster and more modular.
-2. **End-to-End Vision Models:** Pivoting to much larger, state-of-the-art multimodal models that handle the vision, structure, and text comprehension natively in one pass. This produces higher quality results but requires significantly more compute power.
+The project will focus on two primary trajectories moving forward:
+1. **Qwen Fine-Tuning Pipeline:** Refining the current pipeline by implementing the advanced image enhancement techniques mentioned above, and fine-tuning Qwen specifically on our domain's complex handwriting and tabular structures to push the baseline OCR accuracy even higher.
+2. **End-to-End Vision Models:** Continuing to explore state-of-the-art multimodal models capable of handling the vision, implicit enhancement, structure mapping, and JSON extraction natively in a single pass, aiming to eventually eliminate the need for a multi-step pipeline.
