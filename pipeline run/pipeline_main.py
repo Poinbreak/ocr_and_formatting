@@ -104,16 +104,23 @@ def predict_with_nuextract(model, tokenizer, text, schema, device):
 if __name__ == "__main__":
     import glob
     import shutil
+    import sys
     
-    images = glob.glob("*.jpg") + glob.glob("*.png") + glob.glob("*.webp")
-    # Filter out already enhanced/preprocessed images to avoid loop
-    images = [img for img in images if not img.startswith("pipeline_")]
-    
-    if not images:
-        print("No images found in the current directory.")
-        sys.exit(0)
+    if len(sys.argv) > 1:
+        target_image = sys.argv[1]
+        if not os.path.exists(target_image):
+            print(f"Error: File '{target_image}' not found.")
+            sys.exit(1)
+    else:
+        images = glob.glob("*.jpg") + glob.glob("*.png") + glob.glob("*.webp")
+        # Filter out already enhanced/preprocessed images to avoid loop
+        images = [img for img in images if not img.startswith("pipeline_")]
         
-    target_image = images[0] # Test on the first available image
+        if not images:
+            print("No images found in the current directory.")
+            sys.exit(0)
+            
+        target_image = images[0] # Test on the first available image
     
     # Define artifact paths
     preprocessed_path = "pipeline_preprocessed.jpg"
@@ -136,7 +143,7 @@ if __name__ == "__main__":
         f.write(raw_text)
     print(f"[*] Raw OCR saved to: {raw_ocr_path}")
         
-    # 4. Context Updated Text
+    # 4. JSON Extract
     print("[*] Loading NuExtract-tiny...")
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model_id = "numind/NuExtract-tiny"
@@ -145,23 +152,7 @@ if __name__ == "__main__":
         model_id, torch_dtype=torch.float32 if device == "cpu" else torch.bfloat16, trust_remote_code=True, device_map=device
     )
     
-    print("[*] Context updating raw OCR text...")
-    correction_schema = '{"corrected_full_text": ""}'
-    corrected_json_str = predict_with_nuextract(model, tokenizer, raw_text, correction_schema, device)
-    
-    # Attempt to extract just the string from the returned JSON
-    try:
-        corrected_dict = json.loads(corrected_json_str)
-        context_updated_text = corrected_dict.get("corrected_full_text", corrected_json_str)
-    except json.JSONDecodeError:
-        context_updated_text = corrected_json_str
-        
-    with open(context_updated_path, "w", encoding="utf-8") as f:
-        f.write(context_updated_text)
-    print(f"[*] Context updated text saved to: {context_updated_path}")
-        
-    # 5. JSON Extract
-    print("[*] Parsing structured JSON from corrected text...")
+    print("[*] Parsing structured JSON from raw OCR text...")
     final_schema = '''{
       "subject": "",
       "concepts": [
@@ -173,7 +164,7 @@ if __name__ == "__main__":
       "departments": [""]
     }'''
     
-    json_data = predict_with_nuextract(model, tokenizer, context_updated_text, final_schema, device)
+    json_data = predict_with_nuextract(model, tokenizer, raw_text, final_schema, device)
     
     with open(final_json_path, "w", encoding="utf-8") as f:
         f.write(json_data)
@@ -183,8 +174,7 @@ if __name__ == "__main__":
     print(f"1. Preprocessed Image: {preprocessed_path}")
     print(f"2. Postprocessed Image: {postprocessed_path}")
     print(f"3. Raw OCR Text: {raw_ocr_path}")
-    print(f"4. Context Updated Text: {context_updated_path}")
-    print(f"5. Final JSON: {final_json_path}")
+    print(f"4. Final JSON: {final_json_path}")
     print(f"{'='*40}")
     print("Final JSON Output:")
     print(json_data)
