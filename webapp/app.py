@@ -84,6 +84,7 @@ def api_models():
                 "description": meta["description"],
                 "default_prompt": meta["default_prompt"],
                 "backend": meta["backend"],
+                "available": meta.get("available", True),
             }
         )
     return jsonify(

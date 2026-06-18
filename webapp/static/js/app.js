@@ -89,7 +89,12 @@
         items.forEach((m) => {
           const opt = document.createElement('option');
           opt.value = m.key;
-          opt.textContent = m.name;
+          if (m.available === false) {
+            opt.textContent = m.name + ' (not installed)';
+            opt.disabled = true;
+          } else {
+            opt.textContent = m.name;
+          }
           optgroup.appendChild(opt);
         });
         modelSelect.appendChild(optgroup);

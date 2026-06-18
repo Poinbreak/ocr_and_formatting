@@ -21,6 +21,16 @@ if sys.stdout.encoding != "utf-8":
     sys.stdout.reconfigure(encoding="utf-8")
 
 # ---------------------------------------------------------------------------
+# Check optional backends at import time
+# ---------------------------------------------------------------------------
+try:
+    import importlib
+    importlib.import_module("paddleocr")
+    _PADDLE_AVAILABLE = True
+except ImportError:
+    _PADDLE_AVAILABLE = False
+
+# ---------------------------------------------------------------------------
 # Catalogue of every model the dashboard can offer
 # ---------------------------------------------------------------------------
 MODEL_CATALOGUE = {
@@ -73,6 +83,7 @@ MODEL_CATALOGUE = {
         "backend": "paddle",
         "description": "PaddleOCR vision-language pipeline (v1.6).",
         "default_prompt": "Formula Recognition:",
+        "available": _PADDLE_AVAILABLE,
     },
     "ollama-qwen": {
         "name": "Qwen2.5-VL 7B (Ollama)",
@@ -303,6 +314,12 @@ class _ModelManager:
 
     # ------------------------------------------------------------------
     def _load_paddle(self, meta: dict):
+        if not _PADDLE_AVAILABLE:
+            raise RuntimeError(
+                "PaddleOCR is not installed. "
+                "Install it with: pip install paddlepaddle paddleocr  "
+                "(may conflict with PyTorch on Windows — see README)."
+            )
         from paddleocr import PaddleOCRVL
 
         try:
