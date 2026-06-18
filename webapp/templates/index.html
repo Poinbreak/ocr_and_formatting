@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OCR & Extraction Dashboard — upload images, choose models, get raw text and structured JSON.">
+  <title>DigitWin — OCR & Extraction Dashboard</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+</head>
+<body>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <div class="app-container">
+
+    <!-- ========== HEADER ========== -->
+    <header class="app-header">
+      <div class="app-logo">
+        <div class="app-logo-icon">🔍</div>
+        <div>
+          <h1>DigitWin OCR</h1>
+          <p>Multi-Model OCR & JSON Extraction Dashboard</p>
+        </div>
+      </div>
+      <div class="header-status">
+        <div class="status-badge" id="ollamaStatus">
+          <span class="status-dot loading" id="ollamaStatusDot"></span>
+          <span id="ollamaStatusText">Checking Ollama…</span>
+        </div>
+        <div class="status-badge" id="modelStatus">
+          <span class="status-dot offline" id="modelStatusDot"></span>
+          <span id="modelStatusText">No model loaded</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========== MAIN GRID ========== -->
+    <div class="main-grid">
+
+      <!-- ===== LEFT COLUMN — INPUT ===== -->
+      <div class="card" id="inputCard">
+        <div class="card-header">
+          <h2><span class="card-icon">📤</span> Input</h2>
+        </div>
+        <div class="card-body">
+
+          <!-- Image Upload -->
+          <div class="form-group">
+            <label class="form-label">Image</label>
+            <div class="upload-zone" id="uploadZone">
+              <div class="upload-zone-icon">🖼️</div>
+              <div class="upload-zone-text">
+                Drag & drop or <span>browse</span>
+              </div>
+              <div class="upload-zone-hint">PNG, JPG, WebP, BMP, TIFF — max 50 MB</div>
+              <input type="file" id="fileInput" accept="image/*">
+            </div>
+            <div class="image-preview" id="imagePreview">
+              <img id="previewImg" src="" alt="Preview">
+            </div>
+          </div>
+
+          <!-- Model Select -->
+          <div class="form-group">
+            <label class="form-label" for="modelSelect">Model</label>
+            <select class="form-select" id="modelSelect">
+              <option value="" disabled selected>Loading models…</option>
+            </select>
+          </div>
+
+          <!-- Model Info -->
+          <div class="model-info hidden" id="modelInfo">
+            <span class="model-info-icon">🤖</span>
+            <div>
+              <div class="model-info-name" id="modelInfoName"></div>
+              <div class="model-info-desc" id="modelInfoDesc"></div>
+            </div>
+          </div>
+
+          <!-- Prompt -->
+          <div class="form-group">
+            <label class="form-label" for="promptInput">Prompt</label>
+            <textarea class="form-textarea" id="promptInput" rows="3"
+                      placeholder="Model prompt will auto-fill…"></textarea>
+          </div>
+
+          <!-- Enhancement Toggle -->
+          <div class="form-group">
+            <div class="toggle-row">
+              <span class="toggle-label">OpenCV Image Enhancement</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="enhanceToggle">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Action Buttons -->
+          <div class="form-group">
+            <button class="btn btn-primary" id="btnRunOCR" disabled>
+              <span>⚡</span> Run OCR
+            </button>
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-pipeline" id="btnRunPipeline" disabled>
+              <span>🔗</span> Run Full Pipeline
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ===== CENTER COLUMN — RAW TEXT ===== -->
+      <div class="card" id="textCard">
+        <div class="card-header">
+          <h2><span class="card-icon">📝</span> Raw OCR Text</h2>
+        </div>
+        <div class="card-body" style="position:relative;">
+
+          <div class="output-block" id="textOutputBlock">
+            <div class="output-toolbar hidden" id="textToolbar">
+              <div class="output-stats" id="textStats"></div>
+              <div class="output-actions">
+                <button class="btn btn-secondary btn-small" id="btnCopyText" title="Copy text">📋 Copy</button>
+                <button class="btn btn-secondary btn-small" id="btnDownloadText" title="Download .txt">💾 .txt</button>
+              </div>
+            </div>
+            <div id="textOutput">
+              <div class="output-placeholder">
+                <div class="placeholder-icon">📝</div>
+                <div>OCR output will appear here</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- NuExtract Section -->
+          <div class="divider"></div>
+
+          <div class="form-group">
+            <label class="form-label" for="schemaInput">JSON Schema (NuExtract)</label>
+            <textarea class="form-textarea" id="schemaInput" rows="6"
+                      placeholder="Loading default schema…"></textarea>
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-secondary" id="btnExtractJSON" disabled style="width:100%;">
+              <span>🧩</span> Extract JSON
+            </button>
+          </div>
+
+          <!-- Loading overlay -->
+          <div class="loading-overlay" id="textLoadingOverlay">
+            <div class="spinner"></div>
+            <div class="loading-text" id="textLoadingText">Running OCR…</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== RIGHT COLUMN — JSON OUTPUT ===== -->
+      <div class="card" id="jsonCard">
+        <div class="card-header">
+          <h2><span class="card-icon">📦</span> Structured JSON</h2>
+        </div>
+        <div class="card-body" style="position:relative;">
+
+          <div class="output-block" id="jsonOutputBlock">
+            <div class="output-toolbar hidden" id="jsonToolbar">
+              <div class="output-stats" id="jsonStats"></div>
+              <div class="output-actions">
+                <button class="btn btn-secondary btn-small" id="btnCopyJSON" title="Copy JSON">📋 Copy</button>
+                <button class="btn btn-secondary btn-small" id="btnDownloadJSON" title="Download .json">💾 .json</button>
+              </div>
+            </div>
+            <div id="jsonOutput">
+              <div class="output-placeholder">
+                <div class="placeholder-icon">📦</div>
+                <div>JSON extraction will appear here</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Loading overlay -->
+          <div class="loading-overlay" id="jsonLoadingOverlay">
+            <div class="spinner"></div>
+            <div class="loading-text" id="jsonLoadingText">Extracting JSON…</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /main-grid -->
+
+    <!-- ========== PIPELINE PROGRESS BAR ========== -->
+    <div class="pipeline-progress" id="pipelineProgress">
+      <div class="pipeline-steps">
+        <div class="pipeline-step" id="pStep1">
+          <div class="pipeline-step-dot">1</div>
+          <div class="pipeline-step-label">Upload</div>
+        </div>
+        <div class="pipeline-connector" id="pConn1"></div>
+        <div class="pipeline-step" id="pStep2">
+          <div class="pipeline-step-dot">2</div>
+          <div class="pipeline-step-label">Enhance</div>
+        </div>
+        <div class="pipeline-connector" id="pConn2"></div>
+        <div class="pipeline-step" id="pStep3">
+          <div class="pipeline-step-dot">3</div>
+          <div class="pipeline-step-label">OCR</div>
+        </div>
+        <div class="pipeline-connector" id="pConn3"></div>
+        <div class="pipeline-step" id="pStep4">
+          <div class="pipeline-step-dot">4</div>
+          <div class="pipeline-step-label">JSON Extract</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /app-container -->
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
