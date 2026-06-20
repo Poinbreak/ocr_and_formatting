@@ -72,3 +72,19 @@ The Solution: We must collaborate with the database/backend team to define the e
 
 Future Infrastructure
 Running 3B+ parameter models on local CPUs is inefficient for scale. For deployment, we recommend packaging this 3-stage pipeline into a dedicated microservice backed by a lightweight GPU inference engine (like vLLM or Ollama), ensuring instant processing for end-users.
+
+## 4. Recent Updates (Last 4 Days)
+
+### Extensive Model Testing & Kaggle Validation
+Over the past four days, we conducted rigorous stress-testing of various model architectures.
+- **Kaggle Testing Environment**: We utilized Kaggle notebooks (`Kaggle_Vision_Models_Suite.ipynb`, `Kaggle_Qwen_Family.ipynb`) to evaluate models that require significant VRAM, bypassing our local hardware constraints.
+- **Model Implementations**: We implemented and evaluated scripts for several distinct models, including MiniCPM (`minicpm_main.py`), PaliGemma (`paligemma_main.py`), and the Qwen family.
+- **GPU Errors & Constraints**: During local testing, we encountered persistent GPU Out-of-Memory (OOM) errors and CUDA allocation issues when attempting to run heavier models (like the 16GB MiniCPM). This reinforced the necessity of our Kaggle testing suite and highlighted the need for a highly optimized, compute-efficient pipeline.
+
+### Model Analysis Findings
+Based on the external model analysis report (`model analysis - Sheet1.pdf`), the performance ranking of the evaluated Vision-Language Models for our specific use case is decisively:
+1. **Qwen3-VL 8B Instruct** (Ranked Best)
+2. **GLM-4V** (Follows closely)
+3. **Chandra** (Third position)
+
+These findings validate our architectural pivot and confirm that the **Qwen3-VL 8B Instruct** model offers the highest accuracy and multimodal capability for the extraction stage of our pipeline.

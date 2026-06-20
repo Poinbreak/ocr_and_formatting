@@ -21,8 +21,7 @@ class LocateAnythingWorker:
             model_path,
             torch_dtype=dtype,
             trust_remote_code=True,
-            load_in_4bit=True,
-            device_map="auto"
+            device_map={"": self.device}
         ).eval()
 
     @torch.no_grad()

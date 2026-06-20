@@ -1,0 +1,1089 @@
+--- Loading Qwen/Qwen2.5-VL-3B-Instruct ---
+Download complete: 
+
+ 0.00/0.00 [01:30<?, ?B/s]
+Fetching 2 files: 100%
+
+ 2/2 [00:00<00:00, 197.68it/s]
+Loading weights: 100%
+
+ 824/824 [00:04<00:00, 423.86it/s]
+Qwen/Qwen2.5-VL-3B-Instruct Output for Image 1:
+ Simple Present
+
+E.T.L.
+English Learning and Teaching League
+Prof. Mahmoud Azab
+
+* Form: Singular + infinitive + (e)s: He/She/It loves Jordan.
+  (I + plural) + infinitive: I/We/They/You love Egypt.
+
+* Negation = (not): Singular + doesn't + infinitive: She/He doesn't smoke
+  (I + plural) + don't + infinitive: I/We/They/You don't smoke
+
+* Question = ? : Does + singular + infinitive: Does it rain?
+  Do + (I + plural) + infinitive: Do you smoke?
+
+* Time Adverbials:
+  1. always
+  2. usually
+  3. regularly
+  4. every time
+  5. often
+  6. sometimes
+  7. occasionally
+  8. from time to time
+  9. twice a...
+  10. rarely
+  11. seldom
+  12. hardly ever
+  13. scarcely
+  14. once a...
+  15. never
+  16. daily
+  1
+Qwen/Qwen2.5-VL-3B-Instruct Output for Image 2:
+ **ESTABLISHMENT OF TURKISH RULE**
+
+INTRO ① The establishment of Turkish rule in India during the last decade of 12th century marked the beginning of a new phase in Indian history because for many centuries hereafter, India was ruled by Turk-Afghan rulers. Turks brought new culture and new outlook which was significantly different from the traditional Indian socio-cultural system.
+
+② The establishment of T.R. in India was not the result of any sudden development. The defeat of Prithvi Raj Chauhan in the Battle of Tarain was the outcome of the combined effect of the large no. of factors. These factors responsible for the defeat of Rajputs and success of Turks were inherent in the political-admin., socio-cultural, economic and religious life.
+
+POLITICAL FACTORS RESPONSIBLE FOR DEFEAT OF RAIPUTS AGAINST TURKS
+
+- Political fragmentation prevailing in N.India was the most important reason responsible for the failure of Rajputs.
+- The EMA was the age of feudalism in India. There was no central authority in N.India. A no. of small regional principalities were ruling. Because of this political fragmentation the Turkish invaders were not required to face any serious challenge and they could defeat the Raj
+Qwen/Qwen2.5-VL-3B-Instruct Output for Image 3:
+ par des intervalles d'un caractère différent. J'ai jugé que l'écriture manuscrite convenait le mieux à cet usage. La dimension
+Notes
+Jourquor après avoir écrit: "qui veut se donner à ce peinture doit commencer par se faire
+Qwen/Qwen2.5-VL-3B-Instruct Output for Image 4:
+ Wenn:
+Folge Wenn + Kondition
+→ Ich habe Angst, wenn ich zu Hause alleine bin
+→ Meine Mutter ärgert sich, wenn die Küche lehmützig ist
+→ Wenn er Bier trinkt, dann er Spaß hat.
+
+Dativ-verbs:
+→ helfen → danken
+→ gefallen → gratulieren
+→ passen → gehören
+→ stehen → antworten (Ich frage dich, ich antworte dir)
+
+Es geht mir gut
+Es tut mir leid
+Es ist mir peinlich.
+
+→ Es geht um | Der Text geht um... (The text is about)
+→ Ich arbeite an der Schule und Universität
+Qwen/Qwen2.5-VL-3B-Instruct Output for Image 5:
+ 你被困在一个小房间里。你并不记得发生了什么，也不知道为什么关上了窗户。你可以从房间的窗口看到食物，但是如果你用力敲门或大声叫喊，没有人回应。你决定一定要逃跑，要不然情况可能会变得更不好。
+
+你被困在一个小房间里。你并不记得发生了什么，也不知道为什么关上了窗户。你可以从房间的窗口看到食物，但是如果你用力敲门或大声叫喊，没有人回应。你决定一定要逃跑，要不然情况可能会变得更不好。
+Qwen/Qwen2.5-VL-3B-Instruct Output for Image 6:
+ 你被关在一个小房间里。你并不记
+得发生了什么，也不知道为什么被
+关在这里。你以前从房门的窗口
+那儿得到食物，但是你用力敲门
+或著大叫都没有用。你决定一定要
+逃跑，要不然情况可能会变得更不好。
+Qwen/Qwen2.5-VL-3B-Instruct Output for Image 7:
+ いろはにほへと
+ちりめんを
+かがよたれそ
+つねたよう
+うめのおくやま
+けふ、こえて
+かさきゆめみし
+えひもせん
+Qwen/Qwen2.5-VL-3B-Instruct Output for Image 8:
+ Here is the text extracted from the handwritten notes, formatted for clarity:
+
+---
+
+**Player:**
+It comes to show the superiority of the 2 persons or "things" that are not the members of the same family.
+
+**Example:**
+Linda is elder than Nicole (N).
+
+**Important Note:**
+It is also used when showing the age, another way, the 2 persons or "things," then, in their story, will be used as "elder" or "younger."
+
+**Example:**
+Mushak's American is older than Anil's American for the years (2).
+
+**Use of Further:**
+Further:
+It comes to add something, in the knowledge or information.
+Example:
+He has given me further details (Q).
+He has given me further data (Q).
+
+---
+VRAM Cleared.
+
+Qwen/Qwen2.5-VL-7B-Instruct Output for Image 1:
+ Simple!!! Present! EL!! English!!!!!!!!! Learning!!!!! Teaching!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! League!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Prof!!!!!!!!!!!!! !!!!!!!!!!!!!!!!! !!!!!!!!!!!!!!!!!!!!!!! !!!!!!!!!!!!!!!!!! !!!!! !!!!!!!!!!! !!! !!! !!! !! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
+Qwen/Qwen2.5-VL-7B-Instruct Output for Image 2:
+ ```
+!!!!!! EST!!! !!ABL!!!!!! OF!!!!!!!!!!!!!!!!T!R!K!!!!!W!!!L!E! !!
+! ! !!! !! ! !! ! ! ! !! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
+Qwen/Qwen2.5-VL-7B-Instruct Output for Image 3:
+ !par!!!!des!!!in!!interval!!!!!d!!!!!!!!!un!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!car!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Qwen/Qwen2.5-VL-7B-Instruct Output for Image 4:
+ ```
+!!!! Wenn!! !!
+! Folge!!!!!!!!! Wenn!!!!!+!!!!!!!!!!!!!!!!!!!!!! !! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
+Qwen/Qwen2.5-VL-7B-Instruct Output for Image 5:
+ !!!!!你!!!被!!!!!!!!!!!!!!!!!!!!在一个!!小!!!!房间里!!!!!!!!!!!!!!!!!!!你!!!!!!!!!!!并不!!!!!!!记得!!!!!!!!!什么!!!!!也不知道!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!什么!!!!!被!!!!!!!!!!!关!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Qwen/Qwen2.5-VL-7B-Instruct Output for Image 6:
+ 你!!!!被!!!!!!!!!!!关!!!!!!!在一个!!小!!!!!!!!!!!房间里!!!!!你!!!!!!!!!并不!!!!!!记得!!!发生了!!什么!!也不知道!!!!!!!!!为什么!!!!!被!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!关!!!!!!!!!!!!!!这里!!你!!!以前!!!!从!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Qwen/Qwen2.5-VL-7B-Instruct Output for Image 7:
+ いちは!は!!!へ!と!ち!り!の!ま!を!!!わ!か!よ!た!れ!て!!つ!ね!な!う!!え!う!あ!の!大!く!や!!!!ま!け!ろ!こ!え!て!お!さ!き!や!の!!め!し!え!び!も!せ!ん!
+Qwen/Qwen2.5-VL-7B-Instruct Output for Image 8:
+ It!!!!! It!!! comes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! to!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! the!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! age!!!!!!!!!!!!!!!
+VRAM Cleared.
+
+Qwen/Qwen3-VL-8B-Instruct Output for Image 1:
+ Simple Present
+
+ELTL
+English Learning and Teaching League
+Prof. Mahmoud Azab
+
+*Form: Singular + infinitive + (e)s : He/She/It loves Jordan.
+(I + plural) + infinitive : I/We/They/You love Egypt.
+
+*Negation = (not) : singular + doesn't + infinitive : She/He doesn't smoke
+(I + plural) + don't + infinitive : I/We/They/You don't smoke
+
+*Question = ? : Does + singular + infinitive : Does it rain?
+Do + (I + plural) + infinitive : Do you smoke?
+
+*Time Adverbials : 1. always 2. usually 3. regularly 4. every+time
+5. often 6. sometimes 7. occasionally 8. from time to time
+9. twice a... 10. rarely 11. seldom 12. hardly ever
+13. scarcely 14. once a... 15. never 16. daily
+17. weekly 18. monthly 19. yearly 20. frequently
+21. generally 22. normally
+
+*Timeline : ←******↑
+Qwen/Qwen3-VL-8B-Instruct Output for Image 2:
+ ESTABLISHMENT OF TURKISH RULE
+
+INTRO-1) The eit. of Turkish rule in India during the last decade of 12th century marked the beginning of new phase in Indian history because for many centuries hereafter India was ruled by Turko-Afghan rulers. Turks brought new culture and new outlook that was significantly different from the traditional Indian socio-cultural system.
+
+2) The establishment of T.R. in India was not the result of any sudden development. The defeat of Prithvi Raj Chauhan in and Battle of Tarain was the outcome of the combined effect of the large no. of factors. These factors responsible for the defeat of Rajputs and success of Turks were inherent in the politico-admin., socio cultural, economic and religious life.
+
+POLITICAL FACTORS RESPONSIBLE FOR DEFEAT OF RAJPUTS AGAINST TURKS
+
+1) Political fragmentation prevailing in N.India was the most important reason responsible for the failure of Rajputs.
+
+2) The EMA was the age of feudalism in India. There was no central authority in N.India. A no. of small regions or principalities were ruling. Because of this political fragmentation the Turkish invaders were not required to face any serious challenge and they
+Qwen/Qwen3-VL-8B-Instruct Output for Image 3:
+ par des intervalles d'un caractère différent. J'ai jugé que l'écriture manuscrite correspondait au mieux à cet usage. La dimension
+Notes
+Pourquoi après avoir écrit: "qui veut se donner à la peinture doit commencer par se faire
+Qwen/Qwen3-VL-8B-Instruct Output for Image 4:
+ Wenn:
+Folge wenn + Kollision
+→ Ich habe August, wenn ich zu Hause alleine bin
+→ Meine Mutter ärgert sich, wenn die Küche schmutzig ist
+→ Wenn er Bier trinkt, dann er spart → hat.
+
+Dativ verbs:
+→ helfen → danken
+→ gefallen → gratulieren
+→ passen → gehören
+→ stehen → antworten (Ich frage dich, ich antworte dir)
+
+Es geht mir gut
+Es tut mir leid
+Es ist mir peinlich.
+
+→ Es geht um | Der text geht um (The text is about)
+→ Ich arbeite an der Schule und Universität
+→ (Unbenannte Organisation)
+Qwen/Qwen3-VL-8B-Instruct Output for Image 5:
+ 你被关在一个小房间裡，你并不记得发生了什麼，也不知道为什麽被关在这裡，你以爲从房间的窗口那兒能拿到食物，但是你用力敲门或者大叫都没有用，你决定一定要逃跑，要不然情况可能会变得更不好。
+
+你被關在一个小房间裡，你並不記得發生了什麼，也不知道為什麼被關在這裡，你以爲從房間的窗口那兒能拿到食物，但是你用力敲門或者大叫都沒有用，你決定一定要逃跑，要不然情況可能會變的更不好。
+Qwen/Qwen3-VL-8B-Instruct Output for Image 6:
+ 你被关在一个小房间里。你并不记得发生了什么，也不知道为什么被关在这里。你以前从房门的窗口那么得到食物，但是你用敲门或者大叫都没有用，你决定一定要逃跑，要不然情况可能会变更不好。
+Qwen/Qwen3-VL-8B-Instruct Output for Image 7:
+ いろはにほへと
+ちりぬるを
+わかよたれそ
+つねなむ
+うみのたくやま
+けふこえで
+かさきやめみし
+ゑひもせさん
+Qwen/Qwen3-VL-8B-Instruct Output for Image 8:
+ Older
+It comes to show the age seniority that two persons or things are not the members of the same family.
+Example: Lalu is older than Nitish (✓)
+Lalu is older than Nitish (✓)
+
+Important Note: If time is also used to show the age seniority that two persons then, in that case, Older will be used.
+Example: Mukesh Ambani is older than Anil Ambani for five years (✓)
+Mukesh Ambani is older than Anil Ambani for five years (✓)
+
+Use of Further Further:
+It comes to add something in the knowledge or information.
+Example: He has given me further data (✓)
+VRAM Cleared.
+
+--- Loading Chandra OCR 2 ---
+config.json: 
+
+ 2.77k/? [00:00<00:00, 264kB/s]
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+model.safetensors: 100%
+
+ 10.6G/10.6G [00:52<00:00, 353MB/s]
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loading weights: 100%
+
+ 724/724 [00:36<00:00, 117.29it/s]
+generation_config.json: 100%
+
+ 115/115 [00:00<00:00, 12.2kB/s]
+processor_config.json: 
+
+ 1.30k/? [00:00<00:00, 134kB/s]
+chat_template.jinja: 
+
+ 7.62k/? [00:00<00:00, 640kB/s]
+preprocessor_config.json: 100%
+
+ 482/482 [00:00<00:00, 54.9kB/s]
+tokenizer_config.json: 
+
+ 16.7k/? [00:00<00:00, 1.72MB/s]
+tokenizer.json: 100%
+
+ 20.0M/20.0M [00:00<00:00, 100MB/s]
+video_preprocessor_config.json: 100%
+
+ 614/614 [00:00<00:00, 58.8kB/s]
+[transformers] Setting `pad_token_id` to `eos_token_id`:248044 for open-end generation.
+[transformers] Setting `pad_token_id` to `eos_token_id`:248044 for open-end generation.
+Chandra 2 Output 1:
+ user
+Extract all text and structure:
+assistant
+<think>
+
+</think>
+
+<div data-bbox="326 10 582 58" data-label="Section-Header"><h1>Simple Present</h1></div><div data-bbox="352 63 566 100" data-label="Text"><p>E.T.L.<br/>English Learning and Teaching League<br/>Prof. Mahmoud Azab</p></div><div data-bbox="0 108 890 187" data-label="Text"><p>* Form: Singular + infinitive + (e)s : He/She/It <u>loves</u> Jordan.<br/>(I + plural) + infinitive : I/We/They/You <u>love</u> Egypt.</p></div><div data-bbox="0 195 963 280" data-label="Text"><p>* Negation = (not) : singular + doesn't + infinitive : She/He doesn't smoke.<br/>(I + plural) + don't + infinitive : I/We/They/You don't smoke.</p></div><div data-bbox="0 287 842 375" data-label="Text"><p>* Question = ? : Does + singular + infinitive : Does it rain?<br/>Do + (I + plural) + infinitive : Do you smoke?</p></div><div data-bbox="0 382 983 596" data-label="Text"><p>* Time Adverbials: 1. always 2. usually 3. regularly 4. every + time<br/>5. often 6. sometimes 7. occasionally 8. from time to time<br/>9. twice a ..... 10. rarely 11. seldom 12. hardly ever<br/>13. scarcely 14. once a ..... 15. never 16. daily<br/>17. weekly 18. monthly 19. yearly 20. frequently<br/>21. generally 22. normally</p></div><div data-bbox="0 591 492 659" data-label="Text"><p>* Timeline: &lt;----- Past now Future -----&gt;</p></div><div data-bbox="0 63
+[transformers] Setting `pad_token_id` to `eos_token_id`:248044 for open-end generation.
+Chandra 2 Output 2:
+ user
+Extract all text and structure:
+assistant
+<think>
+
+</think>
+
+<div data-bbox="182 35 760 68" data-label="Section-Header">
+<h1>ESTABLISHMENT OF TURKISH RULE</h1>
+</div>
+<div data-bbox="54 97 175 125" data-label="Section-Header">
+<h2>INTRO ①</h2>
+</div>
+<div data-bbox="175 100 645 380" data-label="Text">
+<p>The est. of Turkish rule in India during the last decade of 12th century marked the beginning of new phase in Indian history because for many centuries hereafter India was ruled by Turks-Afghan sultans. Turks brought new culture and new outlook that was significantly different from the traditional Indian socio-cultural system.</p>
+</div>
+<div data-bbox="645 25 975 380" data-label="Diagram">
+<img alt="A map of the Indian subcontinent showing the routes of the Cholas of Tanjore (850-1167). The routes are labeled with various kingdoms: KARUMBI, HINDU SHABI DYNASTY, CHALUKI, DELHI, KARMATHIA, SOLANKI, CHALUKI OF GAT, CHALUKI OF KALYANI, CHALUKI OF KALACHUR, CHOLAS OF TANJORE (850-1167), and the area around the Cholas is also labeled CHOLAS, CHALUKI, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CHOLAS, CH
+[transformers] Setting `pad_token_id` to `eos_token_id`:248044 for open-end generation.
+Chandra 2 Output 3:
+ user
+Extract all text and structure:
+assistant
+<think>
+
+</think>
+
+<div data-bbox="0 19 484 937" data-label="Text"><p>par des in-<br/>tervalles d'un<br/>caractère dif-<br/>férent. J'ai<br/>jugé que<br/>l'écriture ma-<br/>nuscrite con-<br/>venait le mieux<br/>à cet usage.<br/>La dimension</p></div><div data-bbox="562 35 837 220" data-label="Section-Header"><h2>Notes</h2></div><div data-bbox="526 236 998 960" data-label="Text"><p>Pourquoi ai-je<br/>avoir écrit:<br/>"qui veut se<br/>donner à la<br/>peinture doit<br/>commencer<br/>par se faire</p></div><div data-bbox="938 944 963 992" data-label="Page-Footer"><p>9</p></div>
+assistant
+<think>
+
+</think>
+
+<div data-bbox="0 19 484 937" data-label="Text"><p>par des in-<br/>tervalles d'un<br/>caractère dif-<br/>férent. J'ai<br/>jugé que<br/>l'écriture ma-<br/>nuscrite con-<br/>venait le mieux<br/>à cet usage.<br/>La dimension</p></div><div data-bbox="562 35 837 220" data-label="Section-Header"><h2>Notes</h2></div><div data-bbox="526 236 998 960" data-label="Text"><p>Pourquoi ai-je<br/>avoir écrit:<br/>"qui veut se<br/>donner à la<br/>peinture doit<br/>commencer<br/>par se faire</p></div><div data-bbox="938 944 963 992" data-label="Page-Footer"><p>9</p></div>
+assistant
+<think>
+
+</think>
+
+<div data-bbox="0 19 484 937" data-label
+[transformers] Setting `pad_token_id` to `eos_token_id`:248044 for open-end generation.
+Chandra 2 Output 4:
+ user
+Extract all text and structure:
+assistant
+<think>
+
+</think>
+
+<div data-bbox="56 19 155 52" data-label="Text"><p><u>Wenn:</u></p></div><div data-bbox="66 84 457 130" data-label="Text"><p>Folge Wenn + Kondition</p></div><div data-bbox="28 155 950 311" data-label="List-Group"><ul><li>→ Ich habe Angst, wenn ich zu Hause alleine bin</li><li>→ Meine Mutter ärgert sich, wenn die Küche schmutzig ist</li><li>→ Wenn er Bier trinkt, dann er <u>Spaß</u> → hat.</li></ul></div><div data-bbox="58 366 260 403" data-label="Text"><p><u>Darin steckt:</u></p></div><div data-bbox="25 428 937 593" data-label="List-Group"><ul><li>→ Helfen → danken</li><li>→ gefallen → gratulieren</li><li>→ passen → gehören</li><li>→ stehen → antworten (Ich frage dich, ich antworte dir)</li></ul></div><div data-bbox="74 628 311 677" data-label="Text"><p>Es geht mir gut</p></div><div data-bbox="76 668 324 708" data-label="Text"><p>Es tut mir leid</p></div><div data-bbox="76 703 395 743" data-label="Text"><p>Es ist mir peinlich.</p></div><div data-bbox="36 795 584 860" data-label="Text"><p>→ Es geht um | Der Text geht um ...</p></div><div data-bbox="458 833 729 865" data-label="Text"><p>(The text is about)</p></div><div data-bbox="31 902 773 953" data-label="Text"><p>→ Ich arbeite <u>an</
+[transformers] Setting `pad_token_id` to `eos_token_id`:248044 for open-end generation.
+Chandra 2 Output 5:
+ user
+Extract all text and structure:
+assistant
+<think>
+
+</think>
+
+<div data-bbox="145 111 852 270" data-label="Text"><p>你被差在一個十層閣里，你並不記得發生了什麼，也不知道為什麼被差在這裡，你用西門從房門的窗口爬出去到食物處，但你用力敲門或者大叫都沒有用，你決定一定要逃跑，要不然情況可能會更不好。</p></div><div data-bbox="145 296 852 455" data-label="Text"><p>你被關在一個十層閣裡，你並不記得發生了什麼，也不知道為什麼被關在這裡，你用西門從房門的窗口爬出去到食物處，但你用力敲門或者大叫都沒有用，你決定一定要逃跑，要不然情況可能會更不好。</p></div>
+assistant
+<think>
+
+</think>
+
+<div data-bbox="145 111 852 270" data-label="Text"><p>你被差在一個十層閣里，你並不記得發生了什麼，也不知道為什麼被差在這裡，你用西門從房門的窗口爬出去到食物處，但你用力敲門或者大叫都沒有用，你決定一定要逃跑，要不然情況可能會更不好。</p></div><div data-bbox="145 296 852 455" data-label="Text"><p>你被關在一個十層閣裡，你並不記得發生了什麼，也不知道為什麼被關在這裡，你用西門從房門的窗口爬出去到食物處，但你用力敲門或者大叫都沒有用，你決定一定要逃跑，要不然情況可能會更不好。</p></div>
+assistant
+<think>
+
+</think>
+
+<div data-bbox="145 111 852 270" data-label="Text"><p>你被差在一個十層閣里，你並不記得發生了什麼，也不知道為什麼被差在這裡，你用西門從房門的窗口爬出去到食物處，但你用力敲門或者大叫都沒有用，你決定一定要逃跑，要不然情況可能會更不好。</p></div><div data-bbox="145 296 852 455" data-label="Text"><p>你被關在一個十層閣裡，你並不記得發生了什麼，也不知道為什麼被關在這裡
+[transformers] Setting `pad_token_id` to `eos_token_id`:248044 for open-end generation.
+Chandra 2 Output 6:
+ user
+Extract all text and structure:
+assistant
+<think>
+
+</think>
+
+<div data-bbox="111 111 884 343" data-label="Text"><p>你被关在一个小房间里。你并不记得发生了什<br/>么，也不知道，为什么被关在这里。你以前从房<br/>间的窗口那儿得到食物，但是你用力敲门或者<br/>大叫都没有用。你决定一定要逃跑，要不然情况<br/>可能会变得更不好。</p></div>
+assistant
+<think>
+
+</think>
+
+<div data-bbox="111 111 884 343" data-label="Text"><p>你被关在一个小房间里。你并不记得发生了什<br/>么，也不知道，为什么被关在这里。你以前从房<br/>间的窗口那儿得到食物，但是你用力敲门<br/>或者大叫都没有用。你决定一定要<br/>逃跑，要不然情况可能会变得更不好。</p></div>
+assistant
+<think>
+
+</think>
+
+<div data-bbox="111 111 884 343" data-label="Text"><p>你被关在一个小房间里。你并不记得发生了什<br/>么，也不知道，为什么被关在这里。你以前从房<br/>间的窗口那儿得到食物，但是你用力敲门<br/>或者大叫都没有用。你决定一定要<br/>逃跑，要不然情况可能会变得更不好。</p></div>
+assistant
+<think>
+
+</think>
+
+<div data-bbox="111 111 884 343" data-label="Text"><p>你被关在一个小房间里。你并不记得发生了什<br/>么，也不知道，为什么被关在这里。你以前从房<br/>间的窗口那儿得到食物，但是你用力敲门<br/>或者大叫都没有用。你决定一定要<br/>逃跑，要不然情况可能会变得更不好。</p></div>
+assistant
+<think>
+
+</think>
+
+<div data-bbox="111 111 884 343" data-label="Text"><p>你被关在一个小房间里。你并不记得发生了什<br/>么，也不知道，为什么被关在这里。你以前从房<br/>间的窗口那儿得到食物，但是你用力敲门<br/>或者大叫都没有用。你决定一定要<br/>逃跑，要不然情况可能会变得更不好。</p></div>
+assistant
+<think>
+
+</think>
+
+<div data-bbox="111 111 884 
+[transformers] Setting `pad_token_id` to `eos_token_id`:248044 for open-end generation.
+Chandra 2 Output 7:
+ user
+Extract all text and structure:
+assistant
+<think>
+
+</think>
+
+<div data-bbox="111 111 333 200" data-label="Text"><p>いろはははへと<br/>ちりぬるを<br/>わくよたれぞ<br/>つねならむ<br/>うみのぶくやま<br/>けふ、こえて<br/>おささゆぬみし<br/>えひもせすん</p></div>
+assistant
+<think>
+
+</think>
+
+<div data-bbox="111 111 333 200" data-label="Text"><p>いろはははへと<br/>ちりぬるを<br/>わくよたれぞ<br/>つねならむ<br/>うみのぶくやま<br/>けふ、こえて<br/>おささゆぬみし<br/>えひもせすん</p></div>
+assistant
+<think>
+
+</think>
+
+<div data-bbox="111 111 333 200" data-label="Text"><p>いろはははへと<br/>ちりぬるを<br/>わくよたれぞ<br/>つねならむ<br/>うみのぶくやま<br/>けふ、こえて<br/>おささゆぬみし<br/>えひもせすん</p></div>
+assistant
+<think>
+
+</think>
+
+<div data-bbox="111 111 333 200" data-label="Text"><p>いろはははへと<br/>ちりぬるを<br/>わくよたれぞ<br/>つねならむ<br/>うみのぶくやま<br/>けふ、こえて<br/>おささゆぬみし<br/>えひもせすん</p></div>
+assistant
+<think>
+
+</think>
+
+<div data-bbox="111 111 333 200" data-label="Text"><p>いろはははへと<br/>ちりぬるを<br/>わくよたれぞ<br/>つねならむ<br/>うみのぶくやま<br/>けふ、こえて<br/>おささゆぬみし<br/>えひもせすん</p></div>
+assistant
+<think>
+
+</think>
+
+<div data-bbox="11
+Chandra 2 Output 8:
+ user
+Extract all text and structure:
+assistant
+<think>
+
+</think>
+
+<div data-bbox="111 11 479 103" data-label="Text"><p><b>Older</b> → It comes to show the age of only two persons or things. That are not the members of the same family.</p></div><div data-bbox="111 103 479 151" data-label="Text"><p><b>Example:</b> Lala is older than Nitish (✓)<br/>Lalu is older than Nitish (✓)</p></div><div data-bbox="111 151 479 200" data-label="Text"><p>* <b>Important Note:</b> If some is also used to show the age of only two persons then, in that case, older will be used.</p></div><div data-bbox="111 200 479 248" data-label="Text"><p><b>Example:</b> Mukesh Ambani is older than Arvind Ambani for the years (✓).<br/>Mukesh Ambani is older than Arvind Ambani for the years (✓)</p></div><div data-bbox="111 248 479 296" data-label="Text"><p>* <b>Use of Further / Further:</b></p></div><div data-bbox="111 296 479 344" data-label="Text"><p><b>Further:</b> → It comes to add something in the knowledge or information.</p></div><div data-bbox="111 344 479 392" data-label="Text"><p><b>Example:</b> He has given me further data (✓)<br/>He has given me further data (✓)</p></div>
+assistant
+<think>
+
+</think>
+
+<div data-bbox="111 11 479 103" data-label="Text"><p><b>Older</b> → It comes to show the age of only two persons or things. That are not the members of the same family.</p></div><div data-bbox="111 103 479 151" data-label="Text"><p><
+VRAM Cleared.
+
+MiniCPM Output 1:
+ **Title:**
+Simple Present
+
+**Subtitle:**
+EFL Teaching League
+English Learning and E(s) education
+Prof. Mahmoud Azah
+
+**Form:**
+- Singular + infinitive + (s): He/She/It loves Jordan.
+  - I + plural) + infinitive: I/We/They/You love Egypt.
+
+**Negation:** 
+(= not)
+- Singular + does + infinitive: She/He doesn't smoke
+  - I + plural) + do + infinitive: I/We/They/You don't smoke
+
+**Question?**:
+Does + singular + infinitive: Does it rain?
+Do + (I + plural) + infinitive: Do you smoke?
+
+**Time Adverbials**: 
+1. always  
+2. usually  
+3. regularly  
+4. every + time  
+5. often  
+6. sometimes  
+7. occasionally  
+8. from time to time  
+9. twice a...  
+10. rarely  
+11. seldom  
+12. hardly ever  
+13. scarcely once a...  
+14. never  
+15. daily  
+16. weekly  
+17. monthly  
+18. yearly  
+19. frequently  
+20. generally  
+21. normally  
+
+**Timeline**: 
+Past | now | Future  
+- Past  
+- Now  
+- Future  
+
+**To talk about**: 
+Activities that we repeat regularly (routine, habit):
+1. activities that we repeat regularly (routine, habit):
+
+**Examples**:
+a. He watches TV.
+b. She plays tennis.
+c. We go to school everyday.
+d. I study at a Teacher Training College.
+e. states, feelings, opinions and truth:
+
+**Examples**:
+a. I live in Jordan. (state)
+b. They are angry. (feeling)
+c. English is easy. (opinion)
+d. The sun sets in the west (truth)
+/usr/local/lib/python3.12/dist-packages/transformers/modeling_attn_mask_utils.py:202: FutureWarning: The attention mask API under `transformers.modeling_attn_mask_utils` (`AttentionMaskConverter`) is deprecated and will be removed in Transformers v5.10. Please use the new API in `transformers.masking_utils`.
+  warnings.warn(DEPRECATION_MESSAGE, FutureWarning)
+MiniCPM Output 2:
+ Title: ESTABLISHMENT OF TURKISH RULE
+
+Subtitle: INTRO
+Body Text:
+- The east of Turkish rule in India during the last decade of 12th century marked the beginning of new phase in Indian history because for many centuries, Hindu rulers were ruled by Turk. Afghan rulers brought new culture and new outlook that significantly differed from the traditional Indian socio-cultural system.
+
+- The establishment of TR in India was not the result of any sudden development but the outcome of Persian Raj Chauhan and Battle of Tantia Tope which was the outcome of combined effort of three major factors responsible for the defeat of Jat rulers and success of Turks were presence in the political-admin, docu cultural, economic and religious life.
+
+Subtitle: POLITICAL FACTORS RESPONSIBLE FOR THE DEFEAT OF JAT RULERS AGAINST TURKS
+Body Text:
+- Political fragmentation prevailing in N India was the most important reason responsible for the failure of Rajputs.
+    (a) The Mughal era age of foundation in India there was no central authority in N India. A no. of small regional principalities were ruling Because of this political fragmentation the turkman invaders were not required to face any serious challenge and they could defeat the Rajputs decisively.
+
+Footer:www.edumiq.com | 9810395954
+MiniCPM Output 3:
+ Title: Notes
+
+Body Text:
+- par des in-
+tervalés d'un
+caractéridy-
+trent. J'ai
+juge que
+l'écriture ma-
+nuscrite con-
+venait le mieu-
+a cet usage.
+la dimension
+
+Subtitle:
+- Jourqu'ami
+
+Body Text:
+avoir écrit:
+"qui veut le
+dommer à ca
+peinture doit
+commencer
+par se faire
+MiniCPM Output 4:
+ **Title:**
+Wenn:
+
+**Subtitle:**
+Folge wenn + Konjektion
+
+**Body Text:**
+→ Ich habe ausgezogen, wenn ich zu Hause alleine bin
+→ Meine Mutter arbeitet sich, wenn die Küche schmutzig ist
+→ Wenn er Bier trinkt, dann er spaß → habt.
+
+**Title:**
+Daten verls:
+
+**Subtitle:**
+→ helfen → danken
+→ gefallen → gratulieren
+→ passen → gehen → gehen
+→ stehen → antworten (Ich fange dich, ihn antworte dir)
+
+**Body Text:**
+→ Es geht mir gut
+→ Es tut mir leid
+→ Es ist mir peinlich.
+
+→ Es geht um | Der Test geht um ...
+(The text is about ...)
+
+→ Ich arbeite an der Schule und universität
+MiniCPM Output 5:
+ You were separated in a ten-minute interval. You don't remember what happened, why you didn't get to be here today. Years ago from the room's window, there was a smell of food, and it was so strong that even if you couldn't see or hear anything, you knew something was happening nearby. That day, you ran away because you had no choice; you had to escape the smell.
+
+You were separated in a ten-minute interval. You don't remember what happened, where you got lost in this building. You try to find your way back through the windows near the room, but nothing is as it used to be. It doesn't matter if you have a key or not; you're just trying to survive. If you decide to stay here, everything might change forever.
+MiniCPM Output 6:
+ You were locked in a small room, and you didn't remember what happened or why. The door was locked here. You had previously used the window to get food before, but now it's not working anymore. You decided that running away is the only way out, no matter how bad things might become.
+MiniCPM Output 7:
+ Here is the text transcribed from the image:
+
+ちいさいまえと
+ちいかわを
+かわだれこ
+ふたなたぶ
+あめのたこやま
+こよこや
+おきさつのめい
+あじもむせん
+MiniCPM Output 8:
+ **Title:**
+Older
+
+**Body Text:**
+It comes to show the age of 2 persons or things "that are not the members of the same family."
+
+**Example:**
+Inli is elder to Nlish. Inli is older than Nitish.
+
+**Subtitle:**
+Important Note:
+
+**Body Text:**
+If 'time' is also used to show the age seniority, but 2 persons then, in their case, 'other' will be used.
+
+**Example:**
+Mukesh Ambani is elder to Anil Ambani for the years (x).
+
+**Subtitle:**
+Use of further/further:
+
+**Body Text:**
+Further – It comes to add something in the knowledge or information.
+Example: He has given me further data (y).
+He has given me more further data (z).
+VRAM Cleared.
+
+PaliGemma Output 1:
+ Simple Present
+101
+Simple Present Tense
+Form:
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1)
+(1
+[transformers] You are passing both `text` and `images` to `PaliGemmaProcessor`. The processor expects special image tokens in the text, as many tokens as there are images per each text. It is recommended to add `<image>` tokens in the very beginning of your text. For this call, we will infer how many images each text has and add special tokens.
+PaliGemma Output 2:
+ C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+[transformers] You are passing both `text` and `images` to `PaliGemmaProcessor`. The processor expects special image tokens in the text, as many tokens as there are images per each text. It is recommended to add `<image>` tokens in the very beginning of your text. For this call, we will infer how many images each text has and add special tokens.
+PaliGemma Output 3:
+ par des in-
+Notes
+hervelets d'un
+Caractère d'il.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+J'ai.
+[transformers] You are passing both `text` and `images` to `PaliGemmaProcessor`. The processor expects special image tokens in the text, as many tokens as there are images per each text. It is recommended to add `<image>` tokens in the very beginning of your text. For this call, we will infer how many images each text has and add special tokens.
+PaliGemma Output 4:
+ Wenn:
+folgt
+dann + nachdem
+→ Ich habe Angst, wenn ich zu Hause alleine bin. Meine Mutter spricht dich, wenn das letzte Abmessung ist. → Wenn ich beim Bäcker, dann es
+spass
+habst.
+Dazu wos:
+→ folgen
+→ absehen
+→ gefallen
+→ garnieren
+→ gehen
+→ fahren
+→ antworten (da sage ich, ich antwortete das)
+→ lachen
+Es gibt nur gut
+es ist viel zu
+Es ist mir trüblich
+Es gibt um! Der hat sich um
+(der hat in derart)
+→ Sie arbeitet an der Schule und vermisst
+sich manchmal
+[transformers] You are passing both `text` and `images` to `PaliGemmaProcessor`. The processor expects special image tokens in the text, as many tokens as there are images per each text. It is recommended to add `<image>` tokens in the very beginning of your text. For this call, we will infer how many images each text has and add special tokens.
+PaliGemma Output 5:
+ 你被连在一个小房间里,你活不记得發生 了什么,也不知道为什么被关在这里,你以前 从前的窗口都无得到食物,但是你用力 敲门或者大叫都没有用,你决定一定要逃 却要你被捕捉可能会变更不好。
+你被围在一个小房间里,你活不记得發生 了什么,也不知道为什么被关在这里,你以前 从前的窗口都无得到食物,但是你用力 敲门或者大叫都没有用,你决定一定要逃 却要你被捕捉可能会变更不好。
+[transformers] You are passing both `text` and `images` to `PaliGemmaProcessor`. The processor expects special image tokens in the text, as many tokens as there are images per each text. It is recommended to add `<image>` tokens in the very beginning of your text. For this call, we will infer how many images each text has and add special tokens.
+PaliGemma Output 6:
+ 你被关在一个小房间里,你并不记 得发生了什么,也不知道为什么被 关在这里。你以前从房门的窗口 覗儿得到食物,但是你用力敲门 就着大叫都没有用,你决定一定要 逃跑,要不然情况可能会变更不好。
+[transformers] You are passing both `text` and `images` to `PaliGemmaProcessor`. The processor expects special image tokens in the text, as many tokens as there are images per each text. It is recommended to add `<image>` tokens in the very beginning of your text. For this call, we will infer how many images each text has and add special tokens.
+PaliGemma Output 7:
+ いちはにまーと
+ちりぬまを
+かわよたれを
+つねならえ
+うみのおくやま
+しげるこえて
+あさをやのみし
+えひもせすん
+PaliGemma Output 8:
+ It comes to show the age seniority
+Elder
+2 persons or things that are
+by
+not the members of the same
+family.
+Example: Lulu is older to Nish (3) Lulu is older than Nish (2)
+Important Note: If time is also used to show the age seniority, by 2 persons then, in that case, elder will be used.
+Example: Mukesh Ambani is older than Anil Ambani for the 3rd
+Mukesh Ambani is older than Anil Ambani for five years
+Use of further/further
+Further
+It comes to add something in
+knowledge or information.
+Example: He has given me further data. He has given me further data
+VRAM Cleared.
+
+GOT-OCR Output 1:
+ Simple Present E. T. T.  Pe of. Mah mo idA za b Form:  Sing u ar+ in it ive+ ( e) s: He/ She/ It loves Jordan.  + plural) + infinitive: I/ Ne/ They/ You love Egypt.  + Ne gat ion= （ not) : singular+ doesn' t+ infinitive: She/ He doesn' t smoke ( I+ plural) + don' t+ infinitive: I/ We/ They/ You don' t smoke Question= ? : Does+ singular+ infinitive: Does it rain?  Do+ ( I+ plural) + infinitive: Do you smoke?  Time Adverb i als: 1. always 2. usually 3. regularly 4. every+ time 5. often 6. some limes 7. occasionally 8. lio nti me 6 time 9. twice q 10. rarely 11. s el dom 12. hardly ever B. scarcely 14. once a. . 15. never 16. daily 20. f re que ntl ly 18. monthly 21. generally 22. normally Timeline: < 1 x* * * *  + X* * * *  Now Future Uses: To talk about: 1 activities that we repeat regular y( routine, habit)  Examples: a. He watches TV b. She plays tennis.  c. We goto school everyday d. I study at a Teacher Training College.  2. states, feelings, opinions and truth:  Examples: a. I live in Jordan. ( state)  b. They are angry.  ( feeling)  C. Enal is his easy.  ( opinion)  d. The suns el s in the west( truth) 
+GOT-OCR Output 2:
+ ESTABLISHMENT OF TURKISH RULE KABUL INDUS HAH I DYNASTY INTRO-  the eot. of Tutu h you leu in S ndia KARMA TH/ AM CHAUHAN d wing the east decade of 12 th century CDE LH i marked the begun ing of mew phase in dian mato u y because for many SOLAN K IS CHAL U KYA GAH DEN OF CHA LUK YAS OF CHA LUK YAS GAN GA Tuo ko- A gah amu ller. Tureks be cug nt me w OF OR IS S A culture and mew auto oR that was significantly KALAN I KALA CHUR d ffe rent from the t as d it ional S ndi an socio- cul ltu al CHOLAS OF TANTO RE 250-1867 2 The e tabl is hme nt T. Rm inS ndia was mat the reu et of any S uddan development The de a et of Pus th ii Ray chauh an in nd BATTLE of Tae man was the a it com a of the com buned effect of the lange mo. of fad or s. J hne fdo or s we pons ble for the de a et of Raj put s and ucc es of Tuck s were un he ent in the pol tico- admin, A ooo cut u a e, eo ono me and sel gua us if e POLITICAL 1 Pol tica l fragmentation pre val ul ny in N ndia was the FACTORS must un po u tant u a on response r ble for the fa lure of RESPONSIBLE Raj put s.  FOR DEFEAT OF RAPPUTS AGA IN ST m our tle au th out y unN. ndia. A mo. of small eug on a e TURKS pun up a lites were sull ng. Because of th io pol tica e fragmentation the tue tush in vade s were mot required to foe any s eau u challenge and they could de feat the Raj put dec e is ely.  www. edu com iq. com- 9810395954
+GOT-OCR Output 3:
+ her des in.  Notes fera lle s a in Cura cte no i'  To ug uia gni g ioe eir i:  1 gui ve uLk e d 0 m men a eur e in ture d out a cet us age.  commence r la dimension
+GOT-OCR Output 4:
+ Wen n:  Fol qe Wem n+  uel c lion >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >
+GOT-OCR Output 5:
+ 你被关在一个十房间里，你并不记领发生了 什么，也不知道为什么被关在这里，年以的 从房门的窗口那儿得到食物但是你用力 故门或者大叫都没有用，你决定一定要选 跑，要不然情况可能会变更不终。 你被翻在一個十房開裡，你並不记得發生 了什度，包不知道热什股被图在这裡，你以 可徒房的窗口那兒得到食物但是作用力 故門或老大叫都没有。你决定一定要逃跑 要不然情况可能會变更不好。
+GOT-OCR Output 6:
+ 你被关在一个小房间里。你并不记 得发生了什么，也不知道，为什么被 关在这里。你以前从居门的窗口 那儿得到食物，但是你用力敲门 或者大叫都没有用、你决定一定要 逃跑，要不然情况可能会变更不好。
+GOT-OCR Output 7:
+ 5の<
+GOT-OCR Output 8:
+ not the men be s the s are La lu is older than Ni th( )  the n, in that case, o er will be used An bari for f eye ars( x)  Mukesh Amb on is older than A
+VRAM Cleared.
+
+GLM-OCR Output 1:
+ Simple Present
+
+ELIT.
+English Learning and Teaching League
+Prof. Mahmoud Azab
+
+* Form: singular + infinitive + (e)s : He/She/It loves Jordan.
+(I + plural) + infinitive : I/We/They/You love Egypt.
+
+* Negation = (not) : singular + doesn’t + infinitive : She/He doesn’t smoke
+(I + plural) + don’t + infinitive : I/We/They/You don’t smoke
+
+* Question = ? ; Does + singular + infinitive : Does it rain?
+Do + (I + plural) + infinitive : Do you smoke?
+
+* Time Adverbials: 1. always 2. usually 3. regularly 4. every + time
+5. often 6. sometimes 7. occasionally 8. from time to time
+9. twice a... 10. rarely 11. seldom 12. hardly ever
+13. scarcely 14. once a... 15. never 16. daily
+17. weekly 18. monthly 19. yearly 20. frequently
+21. generally 22. normally
+
+* Timeline: Past now Future
+
+* Uses: * To talk about: 1. activities that we repeat regularly (routine, habit):
+* Examples: a. He watches TV.
+b. She plays tennis.
+c. We go to school every day
+d. I study at a Teacher Training College.
+2. states, feelings, opinions and truth:
+
+* Examples: a. I live in Jordan. (state)
+b. They are angry. (feeling)
+c. English is easy. (opinion)
+d. The sun sets in the west. (truth)
+GLM-OCR Output 2:
+ ESTABLISHMENT OF TURKISH RULE
+
+INTRO
+
+$\textcircled{1}$ The ext. of Turkish rule in India during the last decade of 12th century marked the beginning of new phase in Indian history because for many centuries hereafter India was ruled by Turkic-Anglo-Sikh Turks brought new culture and new outlook that was significantly different from the traditional Indian socio-cultural system.
+
+$\textcircled{2}$ The establishment of TR in India was not the result of any sudden development the defeat of Puthuhi Raj Chauhan in and Battle of Tarnawai was the outcome of the combined effect of the large no. of factors. These factors responsible for the defeat of Rajputs and success of Turks were irrelevant in the politico-admirable, socio-cultural, economic and religious life.
+
+POLITICAL FACTORS RESPONSIBLE FOR DEFEAT OF RAJPUTS AGAINST TURKS
+
+$\textcircled{1}$ Political fragmentation prevailing in N. India was the most important reason responsible for the failure of Rajputu.
+
+$\textcircled{2}$ The EMA was the age of feudalism in India. There was no central authority in N. India. A no. of small regions principalities were ruling. Because of this political fragmentation the turkish invaders were not required to face any serious challenge and they could defeat the Rajputu decisively.www.educomiq.com - 9810395954
+GLM-OCR Output 3:
+ par des in-
+tervallés d'un
+caractère dif-
+ferent. J'ai
+jugé que
+l'e-culture ma-
+nuscribe con-
+venait le mieux
+a cet usage.
+La dimension
+
+Notes
+Jourquoi après
+avoir écrit:
+"qui veut se
+donner à ce
+peinture doit
+commencer
+par se faire
+GLM-OCR Output 4:
+ Wenn:
+
+Folge Wenn + Kodition
+
+→ Ich habe augst, wenn ich zu Haure alleine bin
+→ Meine Mutten ärgert dich, wenn die Haure dehmutzig ist
+→ Wenn er Bier tinnt, dann er spap habt.
+
+Daten verbs:
+
+→ Helfen → danken
+→ gefallen → gratulieren
+→ parsen → gehören
+→ Skhen → antworten (Ich fage dich, ich antworte dir)
+
+Es geht mir gut
+Es tut mir leid
+Es ist mir peinlich.
+
+→ Es geht um | Der text geht um.
+(The text is about).
+
+→ Ich arbeite an der Schule und universität
+GLM-OCR Output 5:
+ 你说是在一个十层阁里，你并不认识发生了什么也不知道为什么发生在你以前从门口的窗口口子喂食物要用力打门或若大叫声连用你决定一定要逃跑要不然情况可会会更不好。
+
+你被困在一個十層阁裡，你並不记得发生什麼了什麼也不知道美麗什麼知道在逃跑，你以四扇门的窗户知道食物要用力打门或若大叫声连用你决定一定要逃跑要不然情况可会会更不好。
+GLM-OCR Output 6:
+ 你被关在一个小房间里。你并不记得发生了什么，也不知道为什么被关在这里。你以前从房门的窗口那儿得到食物，但是你用力敲门或者大叫都没有用。你决定一定要逃跑，梦不然情况可能会变不好。
+GLM-OCR Output 7:
+ いろはいろ来へと
+ちり风来を
+わんぱたれき
+つなならう
+うみのおくやま
+しろ、こえて
+あさぎやみれし
+哀ひもせすん
+GLM-OCR Output 8:
+ **Parker** → It comes to show the age initially
+the 2 persons or things that are not the numbers of the same family.
+
+**Example**: It comes to show Nishan (C)
+Lalu is older than Nishan (C)
+
+**Important Note**: If Nishan is used to show the age initially, the 2 persons than in that case, Lalu will be used.
+
+**Example**: Mukesh Antoni is older to Anil Antoni for the years (C)
+Mukesh Antoni is older than Anil Antoni for the years (C)
+
+**Use of Further** → It comes to add something in the knowledge or information.
+
+**Example**: He has given me one further data (C)
+He has given me one further data (C)
+VRAM Cleared.
+
