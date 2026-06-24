@@ -1,9 +1,10 @@
 import torch
 import sys
 import os
+import base64
+import io
 from PIL import Image
-from transformers import Qwen2_5_VLForConditionalGeneration, AutoProcessor
-from qwen_vl_utils import process_vision_info
+from transformers import AutoProcessor, AutoModelForImageTextToText
 
 # Set standard output encoding to handle unicode characters
 if sys.stdout.encoding != 'utf-8':
@@ -14,16 +15,28 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 print(f"Loading Qwen2.5-VL model on {device}...")
 
 # 2. Load the Model and Processor
-model_id = "Qwen/Qwen2.5-VL-3B-Instruct"
+# Use Qwen3-VL-8B-Instruct (or swap to any Qwen2.5/Qwen3 VL model_id)
+model_id = "Qwen/Qwen3-VL-8B-Instruct"
 
-processor = AutoProcessor.from_pretrained(model_id)
+processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True)
 # Load model with mixed precision if cuda, float32 if cpu
 dtype = torch.bfloat16 if device == "cuda" else torch.float32
-model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+model = AutoModelForImageTextToText.from_pretrained(
     model_id,
     torch_dtype=dtype,
-    device_map=device
+    device_map=device,
+    trust_remote_code=True,
 )
+model.eval()
+
+
+def image_to_base64(image_path: str) -> str:
+    """Read an image file and return a base64-encoded PNG data URI."""
+    with Image.open(image_path) as img:
+        buf = io.BytesIO()
+        img.convert("RGB").save(buf, format="PNG")
+        b64 = base64.b64encode(buf.getvalue()).decode("utf-8")
+    return f"data:image/png;base64,{b64}"
 
 # 3. Image to process
 image_dir = r"C:\Saiyanht\projects\digitwin"
@@ -49,12 +62,17 @@ for img_file in image_files:
     print(f"Processing: {img_file}")
     print(f"{'='*60}")
 
-    # 4. Prepare inputs using chat template
+    # 4. Encode image as base64 data URI (Qwen3-VL compatible)
+    image_data_uri = image_to_base64(image_path)
+
     messages = [
         {
             "role": "user",
             "content": [
-                {"type": "image", "image": f"file://{image_path}"},
+                {
+                    "type": "image_url",
+                    "image_url": {"url": image_data_uri},
+                },
                 {"type": "text", "text": prompt_text},
             ],
         }
@@ -63,12 +81,9 @@ for img_file in image_files:
     text = processor.apply_chat_template(
         messages, tokenize=False, add_generation_prompt=True
     )
-    image_inputs, video_inputs = process_vision_info(messages)
 
     inputs = processor(
         text=[text],
-        images=image_inputs,
-        videos=video_inputs,
         padding=True,
         return_tensors="pt",
     ).to(device)

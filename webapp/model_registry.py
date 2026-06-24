@@ -6,6 +6,7 @@ Wraps the exact inference code from the existing project scripts.
 import gc
 import os
 import sys
+import io
 import json
 import base64
 import traceback
@@ -129,6 +130,17 @@ MODEL_CATALOGUE = {
         "description": "Older Qwen2-VL 2B variant — lighter than Qwen2.5.",
         "default_prompt": (
             "Extract all handwritten text verbatim and format it."
+        ),
+    },
+    "qwen3-vl-8b": {
+        "name": "Qwen3-VL-8B-Instruct",
+        "id": "Qwen/Qwen3-VL-8B-Instruct",
+        "group": "Vision Models (HuggingFace)",
+        "backend": "transformers",
+        "description": "Latest Qwen3-VL — uses base64 image_url encoding.",
+        "default_prompt": (
+            "Extract all the text from this image exactly as written. "
+            "Do not add any conversational text or formatting."
         ),
     },
 }
@@ -312,6 +324,17 @@ class _ModelManager:
             )
             self._processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True)
 
+        elif key == "qwen3-vl-8b":
+            from transformers import AutoModelForImageTextToText, AutoProcessor
+
+            self._model = AutoModelForImageTextToText.from_pretrained(
+                model_id,
+                torch_dtype=dtype,
+                device_map=device,
+                trust_remote_code=True,
+            ).eval()
+            self._processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True)
+
     # ------------------------------------------------------------------
     def _load_paddle(self, meta: dict):
         if not _PADDLE_AVAILABLE:
@@ -384,24 +407,28 @@ class _ModelManager:
             return self._infer_chandra(image, prompt, device)
         elif key == "locateanything":
             return self._infer_locateanything(image, prompt, device)
-        elif key == "qwen2-vl-2b":
-            return self._infer_qwen(image, prompt, device)  # same Qwen-VL pattern
+        elif key in ("qwen2-vl-2b", "qwen3-vl-8b"):
+            return self._infer_qwen(image, prompt, device)  # same base64 pattern
         else:
             raise ValueError(f"No inference impl for {key}")
 
     # ------------------------------------------------------------------
     def _infer_qwen(self, image: Image.Image, prompt: str, device: str) -> str:
-        from qwen_vl_utils import process_vision_info
-
-        # Save image to a temp file because Qwen utils expect file paths
-        tmp = os.path.join(os.path.dirname(__file__), "uploads", "_qwen_tmp.png")
-        image.save(tmp)
+        """Qwen2.5-VL and Qwen3-VL — base64 PNG data URI via image_url."""
+        # Encode PIL image to base64 PNG in memory (works for all Qwen VL variants)
+        buf = io.BytesIO()
+        image.convert("RGB").save(buf, format="PNG")
+        b64 = base64.b64encode(buf.getvalue()).decode("utf-8")
+        data_uri = f"data:image/png;base64,{b64}"
 
         messages = [
             {
                 "role": "user",
                 "content": [
-                    {"type": "image", "image": f"file://{tmp}"},
+                    {
+                        "type": "image_url",
+                        "image_url": {"url": data_uri},
+                    },
                     {"type": "text", "text": prompt},
                 ],
             }
@@ -409,11 +436,8 @@ class _ModelManager:
         text = self._processor.apply_chat_template(
             messages, tokenize=False, add_generation_prompt=True
         )
-        image_inputs, video_inputs = process_vision_info(messages)
         inputs = self._processor(
             text=[text],
-            images=image_inputs,
-            videos=video_inputs,
             padding=True,
             return_tensors="pt",
         ).to(device)

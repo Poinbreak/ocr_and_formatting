@@ -55,3 +55,6 @@ for img_file in image_files:
         f.write(result)
     print(f"Result saved to: {output_file}")
     print(result)
+
+    del inputs, output, image
+    torch.cuda.empty_cache()
