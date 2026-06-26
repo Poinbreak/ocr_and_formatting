@@ -356,9 +356,24 @@ def _qwen_infer(image: Image.Image, model_name: str) -> str:
             # Fallback for text-only models
             inputs = _processor(text=[text], padding=True, return_tensors="pt").to(_model.device)
 
+    # Extract EOS tokens to prevent run-on generation
+    tokenizer = getattr(_processor, "tokenizer", _processor)
+    terminators = []
+    if hasattr(tokenizer, "eos_token_id") and tokenizer.eos_token_id is not None:
+        if isinstance(tokenizer.eos_token_id, list):
+            terminators.extend(tokenizer.eos_token_id)
+        else:
+            terminators.append(tokenizer.eos_token_id)
+    if hasattr(tokenizer, "convert_tokens_to_ids"):
+        im_end = tokenizer.convert_tokens_to_ids("<|im_end|>")
+        if im_end is not None and isinstance(im_end, int):
+            terminators.append(im_end)
+    if not terminators:
+        terminators = None
+
     try:
         with torch.no_grad():
-            out = _model.generate(**inputs, max_new_tokens=2048, do_sample=False)
+            out = _model.generate(**inputs, max_new_tokens=2048, do_sample=False, eos_token_id=terminators)
     except ValueError as e:
         if "not used by the model" in str(e):
             # Text-only models will reject vision kwargs like pixel_values.
@@ -368,7 +383,7 @@ def _qwen_infer(image: Image.Image, model_name: str) -> str:
                 if k in ["input_ids", "attention_mask", "position_ids"]
             }
             with torch.no_grad():
-                out = _model.generate(**text_inputs, max_new_tokens=2048, do_sample=False)
+                out = _model.generate(**text_inputs, max_new_tokens=2048, do_sample=False, eos_token_id=terminators)
         else:
             raise
 
