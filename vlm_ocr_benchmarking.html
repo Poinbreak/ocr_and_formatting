@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLM OCR Benchmarking Study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Core Setup */
+        * {
+            box-sizing: border-box;
+        }
+
+        p {
+            margin: 0;
+            margin-bottom: 15px;
+        }
+
+        body {
+            background-color: #121212;
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr;
+            margin: 0;
+            min-height: 100vh;
+            padding: 20px 0;
+            place-items: center;
+        }
+
+        .slide-container {
+            align-items: flex-start;
+            background-color: #000;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            font-family: 'Urbanist', sans-serif;
+            height: 720px;
+            justify-content: center;
+            overflow: hidden;
+            padding: 60px;
+            position: relative;
+            width: 1280px;
+        }
+
+        .slide-container::before {
+            background-image: none;
+            content: '';
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 0;
+        }
+
+        .slide-container::after {
+            background: rgba(218, 255, 222, 0.15);
+            bottom: 50px;
+            content: '';
+            height: 1px;
+            left: 60px;
+            position: absolute;
+            right: 60px;
+            z-index: 1;
+        }
+
+        .slide-container>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Typography */
+        .slide-container h1,
+        .slide-container h2,
+        .slide-container h3,
+        .slide-container h4 {
+            color: #f5f5f5;
+            font-weight: 700;
+            font-family: 'Urbanist', sans-serif;
+            margin: 0;
+        }
+
+        .slide-container h1 span,
+        .slide-container h2 span {
+            color: #deff9a;
+        }
+
+        .slide-container p,
+        .slide-container .subtitle,
+        .slide-container li,
+        .slide-container td,
+        .slide-container .chart-summary {
+            color: #daffde;
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        .slide-container h1 {
+            font-size: 60px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .slide-title {
+            font-size: 50px;
+            line-height: 1;
+            margin-bottom: 40px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .slide-container h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .slide-container p,
+        .slide-container li {
+            font-size: 21px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .slide-container .subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 1.4;
+            margin: 20px 0;
+        }
+
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Layout: Bleed Image Right */
+        .slide-container.bleed-image-layout {
+            align-items: start;
+            display: grid;
+            gap: 50px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            padding: 0;
+        }
+
+        .slide-container.bleed-image-layout::after {
+            display: none;
+        }
+
+        .slide-container.bleed-image-layout>.content-container {
+            padding: 60px 0 60px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .slide-container.bleed-image-layout>.image-container {
+            height: 100%;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .slide-container.bleed-image-layout img.bleed-image-side {
+            border-radius: 0 8px 8px 0;
+            display: block;
+            height: 720px;
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+        }
+
+        .bleed-text-side p {
+            margin-bottom: 20px;
+        }
+
+        /* Layout: Section Title */
+        .section-title-layout {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title-layout h2 {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .section-title-layout p {
+            font-size: 28px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #daffde;
+        }
+
+        .section-title-layout hr {
+            background-color: #deff9a;
+            border: none;
+            height: 5px;
+            margin: 30px auto;
+            width: 100px;
+        }
+
+        /* Layout: Tiled Text With Icons */
+        .tiled-content {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            width: 100%;
+            align-items: stretch;
+        }
+
+        .tile {
+            background-color: #1a1a1a;
+            border-radius: 24px;
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 40px 30px;
+            text-align: left;
+        }
+
+        .tile .icon-container {
+            align-items: center;
+            background-color: #deff9a;
+            border-radius: 50%;
+            color: #000;
+            display: flex;
+            font-size: 28px;
+            height: 65px;
+            justify-content: center;
+            margin-bottom: 25px;
+            width: 65px;
+        }
+
+        .tile h3 {
+            color: #deff9a;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .tile p {
+            color: #f5f5f5;
+            font-size: 18px;
+        }
+
+        /* Layout: Image Right Text Left */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .bullet-list {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .bullet-list li {
+            margin-bottom: 20px;
+            color: #f5f5f5;
+            font-size: 20px;
+        }
+
+        .bullet-list li::marker {
+            color: #deff9a;
+            font-size: 24px;
+        }
+
+        .image-wrapper {
+            border-radius: 24px;
+            height: 450px;
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .image-wrapper img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .two-column .image-wrapper img {
+            object-fit: contain;
+            background: #1a1a1a;
+        }
+
+        /* Layout: Table */
+        .table-layout {
+            width: 100%;
+        }
+
+        .table-layout table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .table-layout th,
+        .table-layout td {
+            padding: 16px 20px;
+            text-align: left;
+        }
+
+        .table-layout th {
+            background-color: #deff9a;
+            color: #000;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .table-layout td {
+            background-color: #1a1a1a;
+            border-bottom: 1px solid #333;
+            font-size: 18px;
+            color: #f5f5f5;
+        }
+
+        .table-layout tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-layout td strong {
+            color: #deff9a;
+        }
+
+        .table-layout tr.top-rank td {
+            background-color: rgba(222, 255, 154, 0.1);
+            border-bottom: 1px solid #deff9a;
+        }
+
+        /* Layout: Bar Chart */
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .bar {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .bar .label {
+            color: #f5f5f5;
+            flex: 0 0 240px;
+            text-align: right;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .bar .bar-inner {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            flex-grow: 1;
+            height: 40px;
+            border: 1px solid #333;
+        }
+
+        .bar .bar-fill {
+            align-items: center;
+            border-radius: 6px;
+            color: #000;
+            display: flex;
+            font-size: 18px;
+            font-weight: 700;
+            height: 100%;
+            justify-content: flex-end;
+            padding-right: 15px;
+        }
+
+        .chart-summary {
+            color: #daffde;
+            font-size: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* Layout: Two Column Tiled Text */
+        .two-column.tiled {
+            align-items: stretch;
+        }
+
+        .two-column.tiled>div {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 24px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .two-column.tiled h3 {
+            color: #deff9a;
+        }
+
+        .two-column.tiled p {
+            color: #f5f5f5;
+        }
+
+        /* Layout: Q&A */
+        .qa-layout {
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+            align-self: center;
+        }
+
+        .qa-layout h2 {
+            font-size: 100px;
+            margin-bottom: 20px;
+            color: #deff9a;
+        }
+
+        .qa-layout p {
+            font-size: 32px;
+            color: #f5f5f5;
+        }
+
+        .qa-layout .contact-info {
+            color: #daffde;
+            font-size: 24px;
+            margin-top: 50px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Slide 1: Title Slide -->
+    <div class="slide-container bleed-image-layout" id="slide1">
+        <div class="content-container">
+            <div class="title-layout">
+                <h1>VLM OCR <span>Benchmarking</span></h1>
+                <p class="subtitle">Identifying the Ultimate Extraction Engine for Production.</p>
+                <p style="color: #666; font-size: 16px; margin-top: 40px; letter-spacing: 2px;">CONFIDENTIAL CASE STUDY
+                </p>
+            </div>
+        </div>
+        <div class="image-container">
+            <img class="bleed-image-side" src="https://i.sstatic.net/tpTQq.jpg"
+                alt="Abstract digital document scanning OCR matrix dark theme">
+        </div>
+    </div>
+
+    <!-- Slide 2: Section Title -->
+    <div class="slide-container" id="slide2">
+        <div class="section-title-layout">
+            <h2>The <span>OCR Dilemma</span></h2>
+            <hr>
+            <p>Modern Vision-Language Models (VLMs) are brilliant reasoners, but terrible transcribers. Their instinct
+                is to translate, summarize, and auto-correct. For ground-truth document extraction, we must identify an
+                engine that suppresses generative habits.</p>
+        </div>
+    </div>
+
+    <!-- Slide 3: Tiled Text With Icons -->
+    <div class="slide-container" id="slide3">
+        <h2 class="slide-title">The <span>Zero-Assumptions</span> Protocol</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon-container"><i class="fa-solid fa-eye-slash"></i></div>
+                    <h3>No Auto-Correction</h3>
+                    <p>Models are strictly prohibited from fixing grammatical errors or guessing ambiguous cursive. If a
+                        stroke is illegible, guessing based on context is a failure condition.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon-container"><i class="fa-solid fa-language"></i></div>
+                    <h3>No Unprompted Translation</h3>
+                    <p>Multi-lingual extraction must preserve the exact native script without autonomously switching to
+                        English.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon-container"><i class="fa-solid fa-crop-simple"></i></div>
+                    <h3>Spatial Integrity</h3>
+                    <p>Linear left-to-right reading is insufficient. Models must prove the ability to parse complex 2D
+                        flowcharts, margin notes, and multi-column diagrams correctly.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Table -->
+    <div class="slide-container" id="slide4">
+        <h2 class="slide-title">The 5-Attribute <span>Rubric</span></h2>
+        <div class="content-area">
+            <div class="table-layout">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Evaluation Attribute</th>
+                            <th>Measurement Focus</th>
+                            <th>Why it was chosen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Character Accuracy</strong></td>
+                            <td>Strict visual-to-text fidelity.</td>
+                            <td>Models must not auto-correct technical jargon or hallucinate values.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Geometric Tracking</strong></td>
+                            <td>Parsing 2D spatial layouts & tables.</td>
+                            <td>Flattening a table into a 1D list destroys critical relational data.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lexical Segmentation</strong></td>
+                            <td>Word and character boundaries.</td>
+                            <td>Messy handwriting requires distinct token boundaries without fracturing.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Foundational Strengths</strong></td>
+                            <td>Baseline logic (DOMs, Markdown).</td>
+                            <td>Indicates underlying architectural maturity and resilience.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fatal Breakdowns</strong></td>
+                            <td>System crashes or infinite loops.</td>
+                            <td>A 90% accurate model that occasionally fabricates data is a liability.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Section Title -->
+    <div class="slide-container" id="slide5">
+        <div class="section-title-layout">
+            <hr>
+            <h2>Per-Image <span>Stress Testing</span></h2>
+            <p>Evaluating the 6 targeted production engines against highly diverse industrial edge cases to isolate
+                specific failure modes.</p>
+        </div>
+    </div>
+
+    <!-- Slide 6: Image 1 Leaderboard -->
+    <div class="slide-container" id="slide6">
+        <h2 class="slide-title">Image 1: <span>Hand-Drawn Topic Table</span></h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <h3 style="color: #f5f5f5; font-size: 26px;">The Stress Test</h3>
+                    <p style="font-size: 20px; margin-bottom: 20px;">This document tests the model's ability to map
+                        unaligned, handwritten gridlines and maintain rows across handwritten bulleted points.</p>
+                    <p style="font-size: 20px;">A strong engine will preserve the logical separation between Topics, Key
+                        Points, and Notes without relying on rigid printed borders.</p>
+                </div>
+                <div class="table-layout">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Model</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="top-rank">
+                                <td><strong>1</strong></td>
+                                <td>GLM-OCR</td>
+                                <td><strong>95.0</strong></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Qwen3-VL-8B</td>
+                                <td>94.0</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Qwen3.5-4B</td>
+                                <td>81.0</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Chandra 2</td>
+                                <td>80.0</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Qwen3.5-0.8B</td>
+                                <td>79.0</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>PaddleOCR</td>
+                                <td>54.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Image 2 Leaderboard -->
+    <div class="slide-container" id="slide7">
+        <h2 class="slide-title">Image 2: <span>Typed Stabiliser Log</span></h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <h3 style="color: #f5f5f5; font-size: 26px;">The Stress Test</h3>
+                    <p style="font-size: 20px; margin-bottom: 20px;">Evaluates high-density alphanumeric extraction
+                        (such as complex decimals and mixed batch numbers).</p>
+                    <p style="font-size: 20px;">It specifically tests the parser's logic on complex nested table headers
+                        (e.g., HTML <code>rowspan="2"</code>) combined with mixed mediums (printed lines vs. handwritten
+                        dates).</p>
+                </div>
+                <div class="table-layout">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Model</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="top-rank">
+                                <td><strong>1</strong></td>
+                                <td>GLM-OCR</td>
+                                <td><strong>94.6</strong></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Qwen3-VL-8B</td>
+                                <td>92.0</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Chandra 2</td>
+                                <td>82.6</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Qwen3.5-4B</td>
+                                <td>80.0</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Qwen3.5-0.8B</td>
+                                <td>61.0</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>PaddleOCR</td>
+                                <td>43.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Image 3 Leaderboard -->
+    <div class="slide-container" id="slide8">
+        <h2 class="slide-title">Image 3: <span>Cursive Costume Inventory</span></h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <h3 style="color: #f5f5f5; font-size: 26px;">The Stress Test</h3>
+                    <p style="font-size: 20px; margin-bottom: 20px;">The ultimate stress test for <strong>semantic
+                            hallucination</strong>.</p>
+                    <p style="font-size: 20px;">Evaluates extreme cursive ambiguity, messy annotations, and the ability
+                        to process empty grid cells without the language model auto-filling fabricated data (e.g.,
+                        inventing clothing items that aren't there).</p>
+                </div>
+                <div class="table-layout">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Model</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="top-rank">
+                                <td><strong>1</strong></td>
+                                <td>Chandra 2</td>
+                                <td><strong>45.0</strong></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Qwen3.5-4B</td>
+                                <td>43.0</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>GLM-OCR</td>
+                                <td>38.0</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Qwen3.5-0.8B</td>
+                                <td>36.0</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Qwen3-VL-8B</td>
+                                <td>25.0</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>PaddleOCR</td>
+                                <td>18.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Image 4 Leaderboard -->
+    <div class="slide-container" id="slide9">
+        <h2 class="slide-title">Image 4: <span>Printed Emergency Form</span></h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <h3 style="color: #f5f5f5; font-size: 26px;">The Stress Test</h3>
+                    <p style="font-size: 20px; margin-bottom: 20px;">Assesses real-world multi-column data scaling,
+                        checkbox matching, and long-form structural stability.</p>
+                    <p style="font-size: 20px;">Engines must maintain 2D row/column relationships across a dense,
+                        full-page layout without flattening the checklist into a single vertical stream.</p>
+                </div>
+                <div class="table-layout">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Model</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="top-rank">
+                                <td><strong>1</strong></td>
+                                <td>Qwen3.5-4B</td>
+                                <td><strong>80.0</strong></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Chandra 2</td>
+                                <td>78.0</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Qwen3.5-0.8B</td>
+                                <td>65.0</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>GLM-OCR</td>
+                                <td>64.0</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Qwen3-VL-8B</td>
+                                <td>52.0</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>PaddleOCR</td>
+                                <td>28.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Global Average Bar Chart -->
+    <div class="slide-container" id="slide10">
+        <h2 class="slide-title">Overall <span>Leaderboard</span> (Global Average)</h2>
+        <div class="content-area">
+            <div class="chart-container">
+                <div class="bar">
+                    <div class="label">1. GLM-OCR</div>
+                    <div class="bar-inner">
+                        <div class="bar-fill" style="width: 72.9%; background: #deff9a;">72.9</div>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="label">2. Chandra 2</div>
+                    <div class="bar-inner">
+                        <div class="bar-fill" style="width: 71.4%; background: #daffde;">71.4</div>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="label">3. Qwen3.5-4B</div>
+                    <div class="bar-inner">
+                        <div class="bar-fill" style="width: 71.0%; background: #daffde;">71.0</div>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="label">4. Qwen3-VL-8B</div>
+                    <div class="bar-inner">
+                        <div class="bar-fill" style="width: 65.75%; background: #daffde;">65.75</div>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="label">5. Qwen3.5-0.8B</div>
+                    <div class="bar-inner">
+                        <div class="bar-fill" style="width: 60.25%; background: #daffde;">60.25</div>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="label">6. PaddleOCR</div>
+                    <div class="bar-inner">
+                        <div class="bar-fill" style="width: 35.75%; background: #e53e3e; color: #fff;">35.75</div>
+                    </div>
+                </div>
+            </div>
+            <p class="chart-summary">Metrics aggregated across all 4 industrial edge-case documents.</p>
+        </div>
+    </div>
+
+    <!-- Slide 11: Two Column Tiled Text (Failures) -->
+    <div class="slide-container" id="slide11">
+        <h2 class="slide-title">Architectural <span>Failures</span></h2>
+        <div class="content-area">
+            <div class="two-column tiled">
+                <div>
+                    <h3 style="color: #e53e3e;">Cursive Hallucination</h3>
+                    <p>Even the top scorer, <strong>GLM-OCR</strong>, suffered on unstructured cursive (Image 3). Rather
+                        than admitting illegibility, its language priors took over, hallucinating completely fabricated
+                        entries.</p>
+                </div>
+                <div>
+                    <h3 style="color: #e53e3e;">1D Geometric Flattening</h3>
+                    <p>Legacy non-generative pipelines like <strong>PaddleOCR</strong> failed catastrophically. Lacking
+                        spatial intelligence, it read across column gaps indiscriminately, flattening 2D tables into
+                        vertical, meaningless gibberish strings.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: Bleed Image Right -->
+    <div class="slide-container bleed-image-layout" id="slide12">
+        <div class="content-container">
+            <div class="bleed-text-side">
+                <h2 class="slide-title" style="margin-bottom: 20px;">The Strategic Solution:<br><span>Qwen 3.5
+                        Series</span></h2>
+                <p>The data reveals that the highly-efficient Qwen 3.5 models punch massively above their compute class.
+                </p>
+                <p><strong>The 4B Model:</strong> Exhibits brilliant spatial logic—formulating step-by-step row/column
+                    extraction plans (Scoring 80 on Image 4)—but truncates early because it wastes token limits
+                    "thinking out loud."</p>
+                <p><strong>The 0.8B Model:</strong> The compute optimization king. Highly accurate transcription for a
+                    sub-1B parameter size, though it currently flattens 2D structures.</p>
+            </div>
+        </div>
+        <div class="image-container">
+            <img class="bleed-image-side" src="https://miro.medium.com/v2/resize:fit:1400/0*pUywKp7jgXxzksmB"
+                alt="Modern AI server rack compute node abstract">
+        </div>
+    </div>
+
+    <!-- Slide 13: Section Title -->
+    <div class="slide-container" id="slide13">
+        <div class="section-title-layout">
+            <hr>
+            <h2>The <span>Fine-Tuning</span> Blueprint</h2>
+            <p>To balance Engineering's mandate for data accuracy with compute reduction, we will execute
+                parameter-efficient fine-tuning (LoRA) on the Qwen 3.5 models.</p>
+        </div>
+    </div>
+
+    <!-- Slide 14: Two Column Tiled Text (Plan) -->
+    <div class="slide-container" id="slide14">
+        <h2 class="slide-title">Execution <span>Plan</span></h2>
+        <div class="content-area">
+            <div class="two-column tiled">
+                <div>
+                    <h3>1. Hardware Efficiency</h3>
+                    <p>Because the 0.8B and 4B models possess micro footprints (1.6GB to 8GB), we can run the entire
+                        training pipeline on <strong>free Kaggle GPU instances</strong> (e.g., single Tesla T4). This
+                        reduces R&D cloud training costs to absolutely zero.</p>
+                </div>
+                <div>
+                    <h3>2. Dataset Forcing</h3>
+                    <p>By training the models exclusively on image-to-JSON pairs, we will rewire their projection
+                        layers.</p>
+                    <ul class="bullet-list" style="margin-top: 10px;">
+                        <li><strong>4B Fix:</strong> Suppress conversational monologue, curing early truncation.</li>
+                        <li><strong>0.8B Fix:</strong> Enforce strict JSON key mapping to cure 2D table flattening.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 15: Q&A -->
+    <div class="slide-container" id="slide15">
+        <div class="qa-layout">
+            <h2>Questions?</h2>
+            <p>Ready to deploy the Optimized LoRA Pipeline.</p>
+            <div class="contact-info">
+                Data Extraction Taskforce
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

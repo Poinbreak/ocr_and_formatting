@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Model Interactive Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #121212;
+            font-family: 'Urbanist', sans-serif;
+            color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        .app-container {
+            background-color: #000;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+            width: 100%;
+            max-width: 1400px;
+            padding: 50px;
+            border: 1px solid #333;
+            position: relative;
+        }
+
+        .header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        h1 span { color: #deff9a; }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #daffde;
+        }
+
+        .config-bar {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            border: 1px solid #333;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        label {
+            font-weight: 700;
+            color: #deff9a;
+            font-size: 16px;
+        }
+
+        input[type="text"], select {
+            background-color: #000;
+            border: 1px solid #333;
+            color: #f5f5f5;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus, select:focus {
+            border-color: #deff9a;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .panel {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            border: 1px solid #333;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel h3 {
+            color: #deff9a;
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Image Upload Area */
+        .upload-area {
+            border: 2px dashed #333;
+            border-radius: 8px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+            background-color: #0a0a0a;
+        }
+
+        .upload-area:hover {
+            border-color: #deff9a;
+            background-color: rgba(222, 255, 154, 0.05);
+        }
+
+        .upload-area i {
+            font-size: 48px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .upload-area span {
+            color: #999;
+            font-size: 18px;
+        }
+
+        #imagePreview {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
+            background-color: #000;
+        }
+
+        /* Results Area */
+        .result-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .result-box {
+            background-color: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: monospace;
+            font-size: 16px;
+            color: #daffde;
+            white-space: pre-wrap;
+            overflow-y: auto;
+            min-height: 250px;
+        }
+        
+        .result-header {
+            color: #f5f5f5;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        button.run-btn {
+            background-color: #deff9a;
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            padding: 15px 30px;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.1s, background-color 0.2s;
+            align-self: flex-start;
+            margin-top: 20px;
+        }
+
+        button.run-btn:hover {
+            background-color: #c4f068;
+            transform: translateY(-2px);
+        }
+        
+        button.run-btn:active {
+            transform: translateY(0);
+        }
+
+        button.run-btn:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        #loadingSpinner {
+            display: none;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <div class="header">
+            <h1>HR Interactive <span>Model Playground</span></h1>
+            <p class="subtitle">Upload industrial documents and test Kaggle-hosted models in real-time.</p>
+        </div>
+
+        <div class="config-bar">
+            <div class="input-group">
+                <label for="apiUrl">Kaggle Gradio API URL:</label>
+                <input type="text" id="apiUrl" placeholder="e.g., https://1234abcd.gradio.live">
+            </div>
+            <div class="input-group" style="flex: 0.5;">
+                <label for="modelSelect">Target Engine:</label>
+                <select id="modelSelect">
+                    <option value="GLM-OCR">GLM-OCR</option>
+                    <option value="Qwen3-VL-8B">Qwen3-VL-8B</option>
+                    <option value="Chandra 2">Chandra 2</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Input Panel -->
+            <div class="panel">
+                <h3><i class="fa-solid fa-file-image"></i> Document Input</h3>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span>Click to upload test image</span>
+                    <img id="imagePreview" src="" alt="Preview">
+                </div>
+                <button class="run-btn" id="runBtn" disabled>Run Extraction <i class="fa-solid fa-spinner fa-spin" id="loadingSpinner"></i></button>
+            </div>
+
+            <!-- Output Panel -->
+            <div class="panel">
+                <h3><i class="fa-solid fa-code"></i> Model Output</h3>
+                <div class="result-container">
+                    <div>
+                        <div class="result-header">Raw Text Output</div>
+                        <div class="result-box" id="rawTextBox">
+                            Awaiting document input...
+                        </div>
+                    </div>
+                    <div>
+                        <div class="result-header">JSON Output</div>
+                        <div class="result-box" id="jsonBox">
+                            Awaiting document input...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const runBtn = document.getElementById('runBtn');
+        const apiUrlInput = document.getElementById('apiUrl');
+        const modelSelect = document.getElementById('modelSelect');
+        const rawTextBox = document.getElementById('rawTextBox');
+        const jsonBox = document.getElementById('jsonBox');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+
+        let currentImageBase64 = null;
+
+        // Handle Image Upload
+        uploadArea.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    currentImageBase64 = e.target.result;
+                    runBtn.disabled = false;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle API Call to Gradio
+        runBtn.addEventListener('click', async () => {
+            let baseUrl = apiUrlInput.value.trim();
+            if (!baseUrl) {
+                alert("Please enter the Kaggle Gradio API URL first.");
+                return;
+            }
+            if (baseUrl.endsWith('/')) baseUrl = baseUrl.slice(0, -1);
+
+            rawTextBox.innerText = "Initiating remote extraction on Kaggle GPU...\nThis may take a moment.";
+            jsonBox.innerText = "Waiting for extraction...";
+            runBtn.disabled = true;
+            loadingSpinner.style.display = 'inline-block';
+
+            try {
+                // We use Gradio's /api/predict endpoint
+                const response = await fetch(`${baseUrl}/api/predict`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        data: [
+                            currentImageBase64, // Image component
+                            modelSelect.value   // Dropdown component
+                        ]
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.error) {
+                    rawTextBox.innerText = `Error from API: ${data.error}`;
+                    jsonBox.innerText = `Error from API: ${data.error}`;
+                } else {
+                    // Assuming the Gradio API returns two outputs now: Raw Text and JSON
+                    rawTextBox.innerText = data.data[0];
+                    jsonBox.innerText = data.data[1];
+                }
+            } catch (error) {
+                rawTextBox.innerText = `Failed to connect to Kaggle API.\n\nError Details: ${error.message}\n\nPlease ensure your Kaggle Notebook is actively running and the URL is correct. Note that Gradio live URLs expire after 72 hours.`;
+                jsonBox.innerText = `Failed to connect to Kaggle API.`;
+            } finally {
+                runBtn.disabled = false;
+                loadingSpinner.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

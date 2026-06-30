@@ -273,6 +273,158 @@ def _build_json(model_name: str, raw: str) -> str:
     )
 
 
+# ── Summary inference ──────────────────────────────────────────────────────────
+_SUMMARY_PROMPT = (
+    "Look at this image and the OCR text extracted from it (shown below). "
+    "In 2-3 sentences, describe what this document is about — its purpose, topic, and "
+    "the kind of information it contains. Be specific and concise.\n\n"
+    "OCR Text:\n{ocr_text}"
+)
+
+def _infer_summary(image_path: str | None, model_name: str, raw: str) -> str:
+    """
+    Uses the loaded VLM to generate a semantic description of what the image/document
+    is about (e.g. 'monthly expense audit', 'weekly todo list').
+    Falls back to a text-only prompt if no image is available or the model is PaddleOCR.
+    """
+    is_err = raw.lower().startswith(("error", "inference error", "model ", "❌", "⚠"))
+    if is_err:
+        return "⚠️ Could not generate summary — OCR failed.\n\n" + raw
+
+    # Trim OCR text to fit in context (max ~800 chars)
+    ocr_snippet = raw[:800] + ("…" if len(raw) > 800 else "")
+    summary_prompt = _SUMMARY_PROMPT.format(ocr_text=ocr_snippet)
+
+    entry = MODEL_REGISTRY.get(model_name, {})
+    kind  = entry.get("kind", "")
+
+    try:
+        # ─ PaddleOCR has no in-process model — use text-only prompt via subprocess python ─
+        if kind == "paddle" or _model is None:
+            # No VLM available; derive a best-effort heuristic summary from OCR text
+            lines     = [l.strip() for l in raw.split("\n") if l.strip()]
+            word_count = len(raw.split())
+            snippet   = lines[0][:120] if lines else raw[:120]
+            return (
+                f"📄 **Document summary** (heuristic — no VLM available for {model_name})\n"
+                f"The image contains {len(lines)} line(s) of text ({word_count} words). "
+                f"Opening line: “{snippet}”"
+            )
+
+        # ─ All VLM models: build a vision + text message and infer ──────────────────
+        if image_path is not None:
+            image = Image.open(image_path).convert("RGB")
+            if kind == "glm_ocr":
+                image.thumbnail((1024, 1024), Image.Resampling.LANCZOS)
+            messages = [{"role": "user", "content": [
+                {"type": "image", "image": image},
+                {"type": "text",  "text":  summary_prompt},
+            ]}]
+        else:
+            messages = [{"role": "user", "content": summary_prompt}]
+
+        # Re-use _qwen_infer path for Qwen variants
+        if kind in ("qwen3vl", "qwen3text", "chandra"):
+            # Temporarily swap the prompt variable for the summary call
+            try:
+                text = _processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+            except Exception:
+                messages = [{"role": "user", "content": summary_prompt}]
+                text = _processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+
+            try:
+                from qwen_vl_utils import process_vision_info
+                image_inputs, video_inputs = process_vision_info(messages)
+                inputs = _processor(
+                    text=[text], images=image_inputs, videos=video_inputs,
+                    padding=True, return_tensors="pt",
+                )
+                inputs = {
+                    k: v.to(torch.float16).to(_model.device) if v.is_floating_point() else v.to(_model.device)
+                    for k, v in inputs.items()
+                }
+                inputs.pop("mm_token_type_ids", None)
+            except Exception:
+                try:
+                    inputs = _processor(
+                        text=[text], images=[image] if image_path else None,
+                        padding=True, return_tensors="pt"
+                    ).to(_model.device)
+                except Exception:
+                    inputs = _processor(text=[text], padding=True, return_tensors="pt").to(_model.device)
+
+            with torch.no_grad():
+                out = _model.generate(**inputs, max_new_tokens=256, do_sample=False)
+            trimmed = [o[len(i):] for i, o in zip(inputs["input_ids"], out)]
+            result  = _processor.batch_decode(trimmed, skip_special_tokens=True)[0].strip()
+
+        elif kind == "glm_ocr":
+            inputs = _processor.apply_chat_template(
+                messages, tokenize=True, add_generation_prompt=True,
+                return_dict=True, return_tensors="pt",
+            ).to(_model.device)
+            with torch.no_grad():
+                out = _model.generate(**inputs, max_new_tokens=256)
+            start  = inputs["input_ids"].shape[-1]
+            result = _processor.decode(out[0][start:], skip_special_tokens=True).strip()
+
+        else:
+            result = "(Summary not supported for this model kind.)"
+
+        return f"📄 **What this image is about:**\n\n{result}"
+
+    except Exception:
+        return f"⚠️ Summary generation failed:\n{traceback.format_exc()[:600]}"
+
+
+# ── Markdown builder ───────────────────────────────────────────────────────────
+def _build_markdown(model_name: str, raw: str) -> str:
+    """
+    Returns a nicely formatted Markdown representation of the OCR output.
+    """
+    is_err = raw.lower().startswith(("error", "inference error", "model ", "❌", "⚠"))
+    if is_err:
+        return f"## ❌ OCR Error\n\n```\n{raw}\n```"
+
+    lines = [l.strip() for l in raw.split("\n") if l.strip()]
+
+    md_parts = [
+        f"## 📝 OCR Output — `{model_name}`",
+        "",
+        "### Extracted Lines",
+        "",
+    ]
+
+    # Detect if lines look like a table (contain pipe chars)
+    if any("|" in l for l in lines):
+        md_parts.append("| # | Text |")
+        md_parts.append("|---|------|")
+        for i, l in enumerate(lines, 1):
+            # Escape pipes already present in text
+            escaped = l.replace("|", "\\|")
+            md_parts.append(f"| {i} | {escaped} |")
+    elif any(re.match(r"^[-•*·]\s|^\d+[.)]", l) for l in lines):
+        # Lines already look like a list — preserve them
+        for l in lines:
+            md_parts.append(l if re.match(r"^[-•*·\d]", l) else f"- {l}")
+    else:
+        # Generic: numbered list of lines
+        for i, l in enumerate(lines, 1):
+            md_parts.append(f"{i}. {l}")
+
+    md_parts += [
+        "",
+        "---",
+        "",
+        "### Full Raw Text",
+        "",
+        "```",
+        raw,
+        "```",
+    ]
+    return "\n".join(md_parts)
+
+
 # ── PaddleOCR subprocess helper ───────────────────────────────────────────────
 def _run_paddle_subprocess(image_path: str) -> str:
     """
@@ -393,10 +545,10 @@ def _qwen_infer(image: Image.Image, model_name: str) -> str:
 
 # ── Inference ─────────────────────────────────────────────────────────────────
 def run_inference(image_path: str, model_name: str):
-    """Returns (raw_text, json_string)."""
+    """Returns (raw_text, json_string, summary, markdown)."""
     if image_path is None:
         err = "Error: please upload an image first."
-        return err, _build_json(model_name, err)
+        return err, _build_json(model_name, err), _infer_summary(None, model_name, err), _build_markdown(model_name, err)
 
     load_model(model_name)
 
@@ -405,7 +557,7 @@ def run_inference(image_path: str, model_name: str):
 
     if _model is None and kind != "paddle":
         err = f"Model {model_name} could not be loaded — see logs above."
-        return err, _build_json(model_name, err)
+        return err, _build_json(model_name, err), _infer_summary(image_path, model_name, err), _build_markdown(model_name, err)
 
     raw = ""
     try:
@@ -466,7 +618,7 @@ def run_inference(image_path: str, model_name: str):
     except Exception:
         raw = f"Inference Error:\n{traceback.format_exc()}"
 
-    return raw, _build_json(model_name, raw)
+    return raw, _build_json(model_name, raw), _infer_summary(image_path, model_name, raw), _build_markdown(model_name, raw)
 
 
 # ── Gradio UI ─────────────────────────────────────────────────────────────────
@@ -486,13 +638,27 @@ with gr.Blocks(title="VLM OCR Demo") as demo:
             )
             run_btn = gr.Button("Extract Text ▶", variant="primary")
         with gr.Column(scale=1):
-            raw_out  = gr.Textbox(label="Raw Text Output", lines=12)
-            json_out = gr.Textbox(label="JSON Output",      lines=12)
+            summary_out = gr.Textbox(
+                label="📄 Image Summary",
+                lines=6,
+                info="Auto-generated description of the image content (content type, stats, opening text).",
+            )
+            raw_out     = gr.Textbox(label="Raw Text Output", lines=10)
+
+    with gr.Row():
+        with gr.Column(scale=1):
+            json_out     = gr.Textbox(label="JSON Output",    lines=14)
+        with gr.Column(scale=1):
+            markdown_out = gr.Textbox(
+                label="📝 Markdown Output",
+                lines=14,
+                info="Markdown-formatted version of the OCR result (numbered list, table, or preserved list).",
+            )
 
     run_btn.click(
         fn=run_inference,
         inputs=[img_input, model_selector],
-        outputs=[raw_out, json_out],
+        outputs=[raw_out, json_out, summary_out, markdown_out],
     )
 
 print("🚀 Starting Gradio — public URL will appear below:")
